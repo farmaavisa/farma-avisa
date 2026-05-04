@@ -1087,7 +1087,15 @@ function rConfig(ca){
         '</div>'+
       '</div>'+
     '</div></div>'+
-    // CAMBIAR CONTRASEÑA
+    // BACKUP
+    '<div class="card"><div class="card-hd"><span>💾</span><h3>Backup de Datos</h3></div><div class="card-bd">'+
+      '<p style="font-size:.83rem;color:var(--gris);margin-bottom:12px;">Los datos se guardan en este navegador. Exportá regularmente para no perder nada si se limpia el caché.</p>'+
+      '<div style="display:flex;gap:9px;flex-wrap:wrap;margin-bottom:10px;">'+
+        '<button class="btn btn-primary" onclick="exportarDatos()">📥 Exportar backup (JSON)</button>'+
+        '<label class="btn btn-outline" style="cursor:pointer;">📤 Importar backup<input type="file" accept=".json" style="display:none" onchange="importarDatos(this)"/></label>'+
+      '</div>'+
+      '<div class="tip">⚠️ <strong>Importar reemplaza TODOS los datos actuales.</strong> Usá esta opción solo para restaurar un backup previo. Exportá primero si tenés datos que no querés perder.</div>'+
+    '</div></div>'+
     (CU.rol==='owner'?
     '<div class="card"><div class="card-hd"><span>🔐</span><h3>Seguridad del Dueño</h3></div><div class="card-bd">'+
       '<div class="fg c1">'+
@@ -1136,15 +1144,48 @@ function removeLogo(){
 }
 
 // ══════════════════════════════════════════════════════════════
-//  EXPORTAR DATOS (backup)
+//  EXPORTAR / IMPORTAR DATOS (backup)
 // ══════════════════════════════════════════════════════════════
 function exportarDatos(){
-  var data={pacientes:DB.pacientes,notificaciones:loadNotifs(),exportado:new Date().toISOString()};
+  var data={
+    pacientes:DB.pacientes,
+    usuarios:DB.usuarios.map(function(u){return{id:u.id,nombre:u.nombre,email:u.email,rol:u.rol};}), // sin contraseñas
+    notificaciones:loadNotifs(),
+    version:4,
+    exportado:new Date().toISOString(),
+    farmacia:'Farmacia de María'
+  };
   var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
   var url=URL.createObjectURL(blob);
   var a=document.createElement('a');a.href=url;
-  a.download='farmaavisa_backup_'+tISO()+'.json';a.click();URL.revokeObjectURL(url);
-  toast('📥 Backup descargado');
+  a.download='farmaavisa_backup_'+tISO()+'.json';
+  a.click();URL.revokeObjectURL(url);
+  toast('📥 Backup descargado — guardalo en un lugar seguro');
+}
+
+function importarDatos(input){
+  var f=input.files[0];if(!f)return;
+  if(!confirm('⚠️ Esto va a REEMPLAZAR todos los pacientes y notificaciones actuales con los del backup.\n\n¿Estás seguro?')){input.value='';return;}
+  var r=new FileReader();
+  r.onload=function(e){
+    try{
+      var data=JSON.parse(e.target.result);
+      if(!data.pacientes||!Array.isArray(data.pacientes)){toast('❌ Archivo inválido — no es un backup de FarmaAvisa');return;}
+      // Restaurar pacientes
+      DB.pacientes=data.pacientes;
+      saveDB();
+      // Restaurar notificaciones si existen
+      if(data.notificaciones&&Array.isArray(data.notificaciones)){
+        saveNotifs(data.notificaciones);
+      }
+      toast('✅ Backup restaurado — '+data.pacientes.length+' paciente(s) importado(s)');
+      SP('pacientes');
+    }catch(err){
+      toast('❌ Error al leer el archivo. Verificá que sea un backup válido.');
+    }
+  };
+  r.readAsText(f);
+  input.value='';
 }
 
 // ══════════════════════════════════════════════════════════════
