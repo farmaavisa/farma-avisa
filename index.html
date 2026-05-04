@@ -3,12 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>FarmaAvisa — Demo</title>
+<meta name="theme-color" content="#1a6b4a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="FarmaAvisa">
+<title>FarmaAvisa — Farmacia de María</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--v:#1a6b4a;--vc:#2d9166;--vp:#e8f5ee;--vm:#c2e8d3;--ac:#f0a500;--fondo:#f7faf8;--blanco:#fff;--gris:#6b7a72;--gc:#edf1ef;--texto:#1c2b22;--danger:#d93025;--info:#1a6b9a;--purple:#7c3aed;--wa:#25d366;--wa-dark:#128c7e;--sh:0 2px 12px rgba(26,107,74,.10);--shl:0 6px 32px rgba(26,107,74,.14);--r:14px;--rs:8px}
+:root{
+  --v:#1a6b4a;--vc:#2d9166;--vp:#e8f5ee;--vm:#c2e8d3;
+  --ac:#f0a500;--fondo:#f7faf8;--blanco:#fff;
+  --gris:#6b7a72;--gc:#edf1ef;--texto:#1c2b22;
+  --danger:#d93025;--info:#1a6b9a;--purple:#7c3aed;
+  --wa:#25d366;--wa-dark:#128c7e;
+  --sh:0 2px 12px rgba(26,107,74,.10);--shl:0 6px 32px rgba(26,107,74,.14);
+  --r:14px;--rs:8px;
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--texto);min-height:100vh}
+
+/* ── LOGIN ── */
+.lbg{position:fixed;inset:0;background:linear-gradient(160deg,var(--v) 0%,#0d3d28 100%);display:flex;align-items:center;justify-content:center;z-index:999;padding:1rem}
+.lbox{background:var(--blanco);border-radius:22px;padding:2.2rem 2rem;width:100%;max-width:380px;box-shadow:0 24px 64px rgba(0,0,0,.35);text-align:center}
+.l-logo-img{width:80px;height:80px;object-fit:contain;border-radius:12px;margin:0 auto 12px;display:block}
+.l-logo-ph{width:80px;height:80px;border-radius:12px;background:var(--v);display:flex;align-items:center;justify-content:center;font-size:2.2rem;margin:0 auto 12px}
+.l-title{font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--v);line-height:1}
+.l-title span{color:var(--vc)}
+.l-sub{font-size:.72rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1.8rem}
+.lf{text-align:left;margin-bottom:.9rem}
+.lf label{display:block;font-size:.73rem;font-weight:600;color:var(--gris);text-transform:uppercase;letter-spacing:.04em;margin-bottom:.35rem}
+.lf input{width:100%;padding:.7rem 1rem;border:1.5px solid var(--gc);border-radius:var(--rs);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:border .15s}
+.lf input:focus{border-color:var(--vc)}
+.l-err{color:var(--danger);font-size:.78rem;margin:.4rem 0;min-height:18px;text-align:left}
+.l-btn{width:100%;padding:.82rem;background:var(--v);color:#fff;border:none;border-radius:var(--rs);font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:600;cursor:pointer;transition:background .15s;margin-top:.3rem}
+.l-btn:hover{background:var(--vc)}
+.l-link{font-size:.8rem;color:var(--gris);margin-top:.9rem;cursor:pointer}
+.l-link a{color:var(--vc);font-weight:600;text-decoration:none}
+.l-link a:hover{text-decoration:underline}
+
+/* ── SIDEBAR ── */
 #SB{position:fixed;top:0;left:0;width:230px;height:100vh;background:var(--v);display:flex;flex-direction:column;z-index:100;box-shadow:4px 0 24px rgba(0,0,0,.12)}
 .sl{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.12)}
 .sl-top{display:flex;align-items:center;gap:10px}
@@ -27,6 +59,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--texto)
 .uav{width:30px;height:30px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:.76rem;font-weight:700;color:#fff}
 .uname{color:#fff;font-weight:600;font-size:.8rem}
 .urole{color:rgba(255,255,255,.5);font-size:.69rem}
+
+/* ── MAIN ── */
 #main{margin-left:230px;min-height:100vh;display:flex;flex-direction:column}
 .topbar{background:var(--blanco);border-bottom:1px solid var(--gc);padding:11px 24px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:50;box-shadow:0 1px 6px rgba(0,0,0,.05)}
 .topbar h2{font-family:'DM Serif Display',serif;font-size:1.18rem;color:var(--v)}
@@ -34,20 +68,26 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--texto)
 .sbox{display:flex;align-items:center;gap:7px;background:var(--gc);border-radius:30px;padding:6px 14px}
 .sbox input{border:none;background:transparent;outline:none;font-size:.86rem;font-family:'DM Sans',sans-serif;width:180px}
 .content{padding:20px 24px;flex:1}
+
+/* ── BOTONES ── */
 .btn{display:inline-flex;align-items:center;gap:6px;padding:7px 15px;border-radius:30px;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:600;border:none;cursor:pointer;transition:all .15s}
 .btn-primary{background:var(--v);color:#fff}.btn-primary:hover{background:var(--vc)}
-.btn-danger{background:var(--danger);color:#fff}.btn-danger:hover{background:#b5271e}
+.btn-danger{background:var(--danger);color:#fff}
 .btn-outline{background:transparent;border:2px solid var(--v);color:var(--v)}.btn-outline:hover{background:var(--vp)}
 .btn-ghost{background:var(--gc);color:var(--gris)}.btn-ghost:hover{background:#dde3df}
 .btn-info{background:var(--info);color:#fff}
-.btn-purple{background:var(--purple);color:#fff}.btn-purple:hover{background:#6d28d9}
-.btn-warn{background:var(--ac);color:#fff}
+.btn-purple{background:var(--purple);color:#fff}
 .btn-wa{background:var(--wa);color:#fff;font-weight:700}.btn-wa:hover{background:var(--wa-dark)}
+.btn-warn{background:var(--ac);color:#fff}
 .btn-sm{padding:4px 11px;font-size:.75rem}
+
+/* ── CARDS ── */
 .card{background:var(--blanco);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;margin-bottom:14px}
 .card-hd{padding:12px 18px;border-bottom:1px solid var(--gc);display:flex;align-items:center;gap:9px}
 .card-hd h3{font-size:.97rem;font-weight:600;font-family:'DM Serif Display',serif;flex:1}
 .card-bd{padding:16px 18px}
+
+/* ── PACIENTES ── */
 .pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
 .pc{background:var(--blanco);border-radius:var(--r);box-shadow:var(--sh);padding:14px 16px;cursor:pointer;transition:all .15s;border:2px solid transparent}
 .pc:hover{border-color:var(--vm);box-shadow:var(--shl);transform:translateY(-2px)}
@@ -57,8 +97,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--texto)
 .prow{font-size:.77rem;color:var(--gris);margin-bottom:2px}
 .pbadges{display:flex;gap:4px;margin-top:7px;flex-wrap:wrap}
 .mb{font-size:.64rem;font-weight:600;padding:2px 7px;border-radius:20px;border:1px solid}
-.mb-c{color:var(--v);border-color:var(--v);background:var(--vp)}.mb-s{color:var(--info);border-color:var(--info);background:#e8f3fa}.mb-ok{color:#059669;border-color:#059669;background:#d1fae5}
+.mb-c{color:var(--v);border-color:var(--v);background:var(--vp)}
+.mb-s{color:var(--info);border-color:var(--info);background:#e8f3fa}
+.mb-ok{color:#059669;border-color:#059669;background:#d1fae5}
 .pc-ac{display:flex;gap:5px;margin-top:8px;border-top:1px solid var(--gc);padding-top:7px}
+
+/* ── FICHA ── */
 .pdhdr{background:var(--blanco);border-radius:var(--r);box-shadow:var(--sh);padding:17px 21px;margin-bottom:13px;display:flex;gap:15px;align-items:flex-start}
 .pdav{width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,var(--v),var(--ac));display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.25rem;font-weight:700;flex-shrink:0}
 .pdi h2{font-family:'DM Serif Display',serif;font-size:1.3rem}
@@ -67,17 +111,21 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--texto)
 .mtabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
 .mtab{display:flex;align-items:center;gap:5px;padding:7px 14px;border-radius:30px;font-size:.81rem;font-weight:600;border:2px solid var(--gc);background:var(--blanco);color:var(--gris);cursor:pointer;transition:all .15s}
 .mtab:hover{border-color:var(--v);color:var(--v)}.mtab.active{background:var(--v);border-color:var(--v);color:#fff}
+
+/* ── TABLAS ── */
 .tbl{width:100%;border-collapse:collapse;font-size:.82rem}
 .tbl th{text-align:left;font-size:.69rem;text-transform:uppercase;letter-spacing:.05em;color:var(--gris);padding:6px 9px;background:var(--gc);font-weight:600}
 .tbl td{padding:8px 9px;border-bottom:1px solid var(--gc);vertical-align:middle}
 .tbl tr:hover td{background:var(--vp)}
 .sp{font-size:.69rem;font-weight:700;padding:2px 8px;border-radius:20px;display:inline-block}
-.sp-ok{background:#d4f5e2;color:#1a6b4a}.sp-w{background:#fef4d8;color:#b07800}.sp-d{background:#fde8e6;color:var(--danger)}.sp-r{background:#fde8e6;color:var(--danger)}
+.sp-ok{background:#d4f5e2;color:#1a6b4a}.sp-w{background:#fef4d8;color:#b07800}.sp-d{background:#fde8e6;color:var(--danger)}
 .mr{display:grid;gap:7px;align-items:center;padding:7px 9px;border-bottom:1px solid var(--gc);font-size:.8rem}
 .mr.bp{grid-template-columns:98px 56px 56px 64px 86px 1fr auto auto}
 .mr.gl{grid-template-columns:98px 76px 94px 76px 1fr auto}
 .mr-hd{font-size:.69rem;color:var(--gris);text-transform:uppercase;font-weight:600;background:var(--gc);border-radius:6px 6px 0 0}
 .vc-card{background:var(--gc);border-radius:var(--rs);padding:10px 13px;margin-bottom:7px;display:flex;gap:12px;align-items:center}
+
+/* ── MODAL ── */
 .mbg{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;display:flex;align-items:center;justify-content:center;padding:18px}
 .modal{background:var(--blanco);border-radius:var(--r);box-shadow:var(--shl);width:100%;max-width:620px;max-height:90vh;overflow-y:auto;animation:mi .2s ease}
 @keyframes mi{from{opacity:0;transform:scale(.96) translateY(8px)}to{opacity:1;transform:none}}
@@ -91,6 +139,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--texto)
 .fp input,.fp select,.fp textarea{padding:7px 10px;border:1.5px solid var(--gc);border-radius:var(--rs);font-family:'DM Sans',sans-serif;font-size:.85rem;outline:none;transition:border .15s;background:var(--blanco)}
 .fp input:focus,.fp select:focus,.fp textarea:focus{border-color:var(--vc)}
 .fp textarea{resize:vertical;min-height:60px}
+
+/* ── MISC ── */
 .tip{background:var(--vp);border-radius:7px;padding:7px 11px;font-size:.79rem;margin-top:8px;line-height:1.5}
 .empty{text-align:center;padding:28px 16px;color:var(--gris)}.empty .ei{font-size:2rem;display:block;margin-bottom:7px}
 .oe{background:var(--blanco);border:1.5px solid var(--gc);border-radius:var(--rs);padding:12px 15px;margin-bottom:9px}
@@ -104,135 +154,121 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--texto)
 .snum{font-size:1.6rem;font-weight:700;font-family:'DM Serif Display',serif}.slabel{font-size:.74rem;color:var(--gris)}
 .role-badge{font-size:.65rem;font-weight:700;padding:2px 8px;border-radius:20px;display:inline-block}
 .rb-owner{background:#fef3c7;color:#b45309}.rb-staff{background:#e8f3fa;color:#1a6b9a}
-.pin-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:500;display:flex;align-items:center;justify-content:center}
-.pin-box{background:#fff;border-radius:16px;padding:28px 24px;width:300px;text-align:center;box-shadow:0 16px 48px rgba(0,0,0,.3)}
-.pin-box h3{font-family:'DM Serif Display',serif;color:var(--v);margin-bottom:6px;font-size:1.1rem}
-.pin-box p{font-size:.8rem;color:var(--gris);margin-bottom:16px}
-.pin-dots{display:flex;gap:10px;justify-content:center;margin-bottom:18px}
-.pin-dot{width:14px;height:14px;border-radius:50%;border:2px solid var(--vc);background:transparent;transition:background .15s}
-.pin-dot.filled{background:var(--v)}
-.pin-keys{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.pin-key{padding:12px;border:1.5px solid var(--gc);border-radius:10px;font-size:1.1rem;font-weight:600;background:#fff;cursor:pointer;transition:all .15s;font-family:'DM Sans',sans-serif}
-.pin-key:hover{background:var(--vp);border-color:var(--v)}.pin-key.del{color:var(--danger)}
-.pin-err{color:var(--danger);font-size:.78rem;margin-top:8px;min-height:18px}
-/* NOTIF CARDS */
-.nc{background:var(--blanco);border-radius:var(--r);box-shadow:var(--sh);padding:13px 16px;margin-bottom:8px;display:flex;align-items:flex-start;gap:12px;border-left:4px solid transparent}
-.nc.pendiente{border-left-color:#f0a500}
+
+/* ── NOTIF PANEL ── */
+.nsec{background:var(--blanco);border-radius:var(--r);box-shadow:var(--sh);margin-bottom:10px;overflow:hidden}
+.nsec-hd{display:flex;align-items:center;gap:10px;padding:13px 18px;cursor:pointer;user-select:none;transition:background .15s}
+.nsec-hd:hover{background:var(--vp)}
+.nsec-title{flex:1;font-family:'DM Serif Display',serif;font-size:1rem;font-weight:600}
+.nsec-count{font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:20px}
+.nsec-pend .nsec-count{background:#fef4d8;color:#b07800}
+.nsec-lista .nsec-count{background:#d1fae5;color:#059669}
+.nsec-hist .nsec-count{background:var(--gc);color:var(--gris)}
+.nsec-arrow{font-size:.8rem;color:var(--gris);transition:transform .25s}
+.nsec-arrow.open{transform:rotate(180deg)}
+.nsec-body{display:none;border-top:1px solid var(--gc)}
+.nsec-body.open{display:block}
+.nsec-search{display:flex;align-items:center;gap:8px;background:var(--gc);border-radius:30px;padding:6px 14px;margin:12px 18px 8px}
+.nsec-search input{border:none;background:transparent;outline:none;font-size:.84rem;font-family:'DM Sans',sans-serif;width:100%}
+.nsec-list{padding:0 18px 14px}
+.nc{background:var(--fondo);border-radius:var(--rs);padding:11px 14px;margin-bottom:7px;display:flex;align-items:flex-start;gap:10px;border-left:3px solid transparent}
+.nc.pendiente{border-left-color:var(--ac)}
 .nc.lista{border-left-color:var(--wa);background:#f0fff6}
 .nc.historial{border-left-color:var(--gc);opacity:.75}
-.nc-ic{font-size:1.4rem;flex-shrink:0;margin-top:2px}
+.nc-ic{font-size:1.3rem;flex-shrink:0;margin-top:1px}
 .nc-body{flex:1;min-width:0}
-.nc-paciente{font-weight:700;font-size:.88rem;color:var(--v);margin-bottom:2px}
-.nc-msg{font-size:.83rem;line-height:1.4;margin-bottom:5px}
-.nc-meta{font-size:.74rem;color:var(--gris);display:flex;gap:10px;flex-wrap:wrap}
-.nc-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-.sec-title{font-family:'DM Serif Display',serif;font-size:1rem;color:var(--texto);font-weight:600;margin:18px 0 10px;display:flex;align-items:center;gap:8px}
-.sec-title span{font-size:.75rem;font-weight:600;padding:2px 9px;border-radius:20px}
-.sec-pend span{background:#fef4d8;color:#b07800}
-.sec-lista span{background:#d1fae5;color:#059669}
-.sec-hist span{background:var(--gc);color:var(--gris)}
-@media print{#SB,.topbar,.mtabs,.no-print,.btn,button{display:none!important}#main{margin-left:0}.content{padding:0}body{background:#fff}}
-#toast-msg{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--texto);color:#fff;border-radius:20px;padding:.6rem 1.2rem;font-size:.84rem;z-index:9999;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap}
-#toast-msg.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.demo-banner{background:var(--ac);color:#fff;text-align:center;padding:6px;font-size:.77rem;font-weight:600;position:fixed;top:0;left:0;right:0;z-index:999;margin-left:230px}
-/* CANAL SELECTOR */
+.nc-paciente{font-weight:700;font-size:.85rem;color:var(--v);margin-bottom:2px}
+.nc-msg{font-size:.82rem;line-height:1.4;margin-bottom:4px}
+.nc-meta{font-size:.73rem;color:var(--gris);display:flex;gap:8px;flex-wrap:wrap}
+.nc-actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
 .canal-opt{flex:1;display:flex;align-items:center;gap:8px;padding:10px 14px;border:2px solid var(--gc);border-radius:10px;cursor:pointer;background:#fff;transition:all .15s}
 .canal-opt.sel-push{border-color:var(--v);background:var(--vp)}
 .canal-opt.sel-wa{border-color:var(--wa);background:#e9fbe9}
-.canal-opt input{accent-color:var(--v)}
-/* LOGO en config */
-.logo-preview{width:80px;height:80px;border-radius:10px;object-fit:contain;border:2px solid var(--gc);display:none}
 
-/* ── RESPONSIVE MÓVIL ─────────────────────────────── */
+/* ── CONFIRM MODAL ── */
+.confirm-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:300;display:flex;align-items:center;justify-content:center;padding:1rem}
+.confirm-box{background:#fff;border-radius:16px;padding:2rem 1.8rem;max-width:340px;width:100%;box-shadow:0 16px 48px rgba(0,0,0,.3);text-align:center}
+.confirm-box h3{font-family:'DM Serif Display',serif;color:var(--danger);margin-bottom:.5rem;font-size:1.1rem}
+.confirm-box p{font-size:.85rem;color:var(--gris);margin-bottom:1.2rem;line-height:1.5}
+.confirm-box .fp{text-align:left;margin-bottom:.8rem}
+.confirm-err{color:var(--danger);font-size:.78rem;margin-bottom:.5rem;min-height:16px}
+
+/* ── RESPONSIVE MÓVIL ── */
 .hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;color:var(--v);font-size:1.5rem;line-height:1;flex-shrink:0}
 .sb-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:99}
 .sb-overlay.open{display:block}
-
 @media(max-width:700px){
-  /* Mostrar hamburguesa */
   .hamburger{display:flex;align-items:center;justify-content:center}
-
-  /* Sidebar oculto por defecto en móvil */
   #SB{transform:translateX(-100%);transition:transform .28s ease;z-index:150;width:240px}
   #SB.open{transform:translateX(0)}
-
-  /* Main ocupa toda la pantalla */
-  #main{margin-left:0!important;padding-top:32px}
-
-  /* Demo banner sin margen */
-  .demo-banner{margin-left:0}
-
-  /* Topbar más compacta */
+  #main{margin-left:0!important}
   .topbar{padding:10px 14px;gap:8px}
   .topbar h2{font-size:1rem}
-
-  /* Buscador más pequeño */
-  .sbox input{width:120px}
-
-  /* Content con menos padding */
+  .sbox input{width:110px}
   .content{padding:14px 12px 80px}
-
-  /* Grid de pacientes: 1 columna */
   .pgrid{grid-template-columns:1fr}
-
-  /* Stats: 1 columna */
   .stats-grid{grid-template-columns:1fr;gap:8px}
-
-  /* Ficha del paciente: campos en 2 col */
   .dfields{grid-template-columns:repeat(2,1fr)}
-
-  /* Formularios: 1 columna */
   .fg{grid-template-columns:1fr!important}
   .fg.c3{grid-template-columns:1fr!important}
-
-  /* Tabla de presion/glucemia: scroll horizontal */
   .mr.bp{grid-template-columns:80px 46px 46px 46px 70px 1fr auto auto;font-size:.74rem}
   .mr.gl{grid-template-columns:80px 60px 80px 60px 1fr auto;font-size:.74rem}
-
-  /* Modal full width en móvil */
   .mbg{padding:0;align-items:flex-end}
   .modal{border-radius:20px 20px 0 0;max-height:92vh;max-width:100%}
-
-  /* Tabs scrolleables */
   .mtabs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch;gap:5px}
   .mtab{white-space:nowrap;font-size:.75rem;padding:6px 11px}
-
-  /* Pin box más pequeño */
-  .pin-box{width:90vw;max-width:300px}
-
-  /* Bottom navigation bar en móvil */
-  #mobile-nav{
-    display:flex;
-    position:fixed;bottom:0;left:0;right:0;z-index:80;
-    background:var(--blanco);border-top:1px solid var(--gc);
-    box-shadow:0 -4px 16px rgba(0,0,0,.08);
-    padding:6px 0 env(safe-area-inset-bottom);
-  }
-  .mn-item{
-    flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;
-    padding:6px 4px;cursor:pointer;border:none;background:none;
-    color:var(--gris);font-size:.6rem;font-weight:500;font-family:'DM Sans',sans-serif;
-    transition:color .15s;position:relative;
-  }
+  #mobile-nav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:80;background:var(--blanco);border-top:1px solid var(--gc);box-shadow:0 -4px 16px rgba(0,0,0,.08);padding:6px 0 env(safe-area-inset-bottom)}
+  .mn-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 4px;cursor:pointer;border:none;background:none;color:var(--gris);font-size:.6rem;font-weight:500;font-family:'DM Sans',sans-serif;transition:color .15s;position:relative}
   .mn-item .mn-ic{font-size:1.25rem;line-height:1}
   .mn-item.act{color:var(--v)}
   .mn-badge{position:absolute;top:2px;right:20%;background:var(--danger);color:#fff;font-size:.55rem;font-weight:700;min-width:15px;height:15px;border-radius:8px;display:flex;align-items:center;justify-content:center;padding:0 3px}
+  .lbox{padding:1.6rem 1.4rem}
 }
-
-@media(min-width:701px){
-  #mobile-nav{display:none!important}
-  .hamburger{display:none!important}
-}
+@media(min-width:701px){#mobile-nav{display:none!important}.hamburger{display:none!important}}
+@media print{#SB,.topbar,.mtabs,.no-print,.btn,button{display:none!important}#main{margin-left:0}.content{padding:0}body{background:#fff}}
+#toast-msg{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--texto);color:#fff;border-radius:20px;padding:.6rem 1.2rem;font-size:.84rem;z-index:9999;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap}
+#toast-msg.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.logo-preview-img{width:80px;height:80px;border-radius:10px;object-fit:contain;border:2px solid var(--gc)}
 </style>
 </head>
 <body>
 
-<div class="demo-banner">🧪 MODO DEMO — Datos de prueba precargados. Logo, PIN y notificaciones se guardan localmente.</div>
+<!-- LOGIN -->
+<div id="LS">
+  <div class="lbg">
+    <div class="lbox">
+      <div id="l-logo-wrap"><div class="l-logo-ph">💊</div></div>
+      <div class="l-title">Farma<span>Avisa</span></div>
+      <div class="l-sub">Farmacia de María</div>
+      <div id="lf-main">
+        <div class="lf"><label>Email</label><input id="lu" type="email" placeholder="usuario@mail.com" autocomplete="username"/></div>
+        <div class="lf"><label>Contraseña</label><input id="lp" type="password" placeholder="••••••••" autocomplete="current-password"/></div>
+        <div class="l-err" id="l-err"></div>
+        <button class="l-btn" onclick="doLogin()">Entrar →</button>
+        <div class="l-link" onclick="showRecovery()">¿Olvidaste tu contraseña?</div>
+      </div>
+      <div id="lf-recovery" style="display:none">
+        <div style="font-size:.85rem;color:var(--gris);margin-bottom:1rem;line-height:1.5;">Respondé la pregunta secreta del dueño para recuperar el acceso.</div>
+        <div class="lf"><label>Pregunta secreta</label><input id="rec-q" readonly style="background:var(--gc);color:var(--gris)"/></div>
+        <div class="lf"><label>Tu respuesta</label><input id="rec-a" type="text" placeholder="Escribí tu respuesta"/></div>
+        <div class="l-err" id="rec-err"></div>
+        <button class="l-btn" onclick="doRecovery()">Verificar →</button>
+        <div class="l-link" onclick="showLogin()">← Volver al login</div>
+      </div>
+      <div id="lf-newpass" style="display:none">
+        <div style="font-size:.85rem;color:var(--v);font-weight:600;margin-bottom:1rem;">✅ Identidad verificada. Creá tu nueva contraseña.</div>
+        <div class="lf"><label>Nueva Contraseña</label><input id="np-pass" type="password" placeholder="Mínimo 6 caracteres"/></div>
+        <div class="lf"><label>Repetir Contraseña</label><input id="np-pass2" type="password" placeholder="Igual que arriba"/></div>
+        <div class="l-err" id="np-err"></div>
+        <button class="l-btn" onclick="doNewPass()">Guardar nueva contraseña →</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-<!-- Overlay para cerrar sidebar en móvil -->
-<div class="sb-overlay" id="sb-overlay" onclick="closeSB()"></div>
-
-<div id="APP">
+<!-- APP -->
+<div id="APP" style="display:none">
+  <div class="sb-overlay" id="sb-overlay" onclick="closeSB()"></div>
   <div id="SB">
     <div class="sl">
       <div class="sl-top">
@@ -249,15 +285,15 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--texto)
     </nav>
     <div class="sfooter">
       <div class="urow">
-        <div class="uav">D</div>
-        <div><div class="uname">Dueño Farmacia</div><div class="urole">👑 Dueño</div></div>
+        <div class="uav" id="UAV">D</div>
+        <div><div class="uname" id="UNAME">—</div><div class="urole" id="UROLE">—</div></div>
       </div>
+      <button class="btn btn-ghost btn-sm" style="margin-top:8px;width:100%;justify-content:center" onclick="doLogout()">🚪 Cerrar sesión</button>
     </div>
   </div>
-  <div id="main" style="padding-top:28px">
+  <div id="main">
     <div class="topbar">
-      <!-- Hamburguesa solo en móvil -->
-      <button class="hamburger" onclick="toggleSB()" aria-label="Menú">☰</button>
+      <button class="hamburger" onclick="toggleSB()">☰</button>
       <h2 id="TT">Pacientes</h2>
       <div class="topbar-r">
         <div class="sbox" id="GS-wrap"><span>🔍</span><input type="text" id="GS" placeholder="Buscar…" oninput="filterP()"/></div>
@@ -267,41 +303,29 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--texto)
   </div>
 </div>
 
-<!-- Barra de navegación inferior para móvil -->
 <nav id="mobile-nav" style="display:none">
-  <button class="mn-item act" id="MN-pacientes" onclick="SP('pacientes');closeSB()">
-    <span class="mn-ic">👥</span><span>Pacientes</span>
-  </button>
-  <button class="mn-item" id="MN-nuevo" onclick="SP('nuevo');closeSB()">
-    <span class="mn-ic">➕</span><span>Nuevo</span>
-  </button>
-  <button class="mn-item" id="MN-notifpanel" onclick="SP('notifpanel');closeSB()" style="position:relative">
-    <span class="mn-ic">🔔</span><span>Notif.</span>
-    <span class="mn-badge" id="mn-badge" style="display:none">0</span>
-  </button>
-  <button class="mn-item" id="MN-config" onclick="SP('config');closeSB()">
-    <span class="mn-ic">⚙️</span><span>Config.</span>
-  </button>
-  <button class="mn-item" onclick="toggleSB()">
-    <span class="mn-ic">☰</span><span>Más</span>
-  </button>
+  <button class="mn-item act" id="MN-pacientes" onclick="SP('pacientes');closeSB()"><span class="mn-ic">👥</span><span>Pacientes</span></button>
+  <button class="mn-item" id="MN-nuevo" onclick="SP('nuevo');closeSB()"><span class="mn-ic">➕</span><span>Nuevo</span></button>
+  <button class="mn-item" id="MN-notifpanel" onclick="SP('notifpanel');closeSB()" style="position:relative"><span class="mn-ic">🔔</span><span>Notif.</span><span class="mn-badge" id="mn-badge" style="display:none">0</span></button>
+  <button class="mn-item" id="MN-config" onclick="SP('config');closeSB()"><span class="mn-ic">⚙️</span><span>Config.</span></button>
+  <button class="mn-item" onclick="toggleSB()"><span class="mn-ic">☰</span><span>Más</span></button>
 </nav>
 
 <div id="toast-msg"></div>
 
 <script>
 'use strict';
+// ══════════════════════════════════════════════════════════════
+//  FARMAAVISA — SISTEMA COMPLETO v4
+//  Login + Seguridad + Notificaciones minimizadas + Producción
+// ══════════════════════════════════════════════════════════════
 
-// ═══════════════════════════════════════════════════════
-//  FARMAAVISA — DEMO COMPLETO v3
-//  Notificaciones WA agrupadas, 3 secciones, badge, logo en config
-// ═══════════════════════════════════════════════════════
+var DB_KEY     = 'fa_db_v4';
+var NOTIFS_KEY = 'fa_notifs_v4';
+var LOGO_KEY   = 'fa_logo';
+var SES_KEY    = 'fa_session';
 
-var PIN_KEY = 'fa_pin';
-var NOTIFS_KEY = 'fa_notifs';
-var LOGO_KEY = 'fa_logo';
-
-var MCL = [
+var MCL=[
   {bg:'#e8f5ee',br:'#2d9166',tx:'#1a6b4a'},{bg:'#e8f3fa',br:'#1a6b9a',tx:'#1a5278'},
   {bg:'#f5eeff',br:'#7c3aed',tx:'#5b21b6'},{bg:'#fff3e0',br:'#c86e00',tx:'#92400e'},
   {bg:'#fce7f3',br:'#be185d',tx:'#9d174d'},{bg:'#e6fffa',br:'#0f766e',tx:'#065f46'},
@@ -309,150 +333,191 @@ var MCL = [
   {bg:'#ede9fe',br:'#6d28d9',tx:'#4c1d95'},{bg:'#d1fae5',br:'#065f46',tx:'#064e3b'}
 ];
 
-// ── DATOS BASE ────────────────────────────────────────
-var DB = {
-  pacientes: [
-    {id:1,nombre:'María',apellido:'Pérez',dni:'20.456.789',telefono:'5492644123456',tel_alt:'',email:'maria@mail.com',direccion:'Av. Colón 1234',dob:'1952-03-14',obra_social:'PAMI',nro_os:'43-567890',med_cabecera:'Dra. López',med_confianza1:'Dr. Martínez (Cardiólogo)',med_confianza2:'',observaciones:'Alérgica a la penicilina. HTA crónica.',
-     cronicos:[
-       {id:1,nombre:'Carvedilol 25mg',dosis:'1 comprimido',color_idx:0,tomas:[{id:1,hora:'08:00'},{id:2,hora:'20:00'}]},
-       {id:2,nombre:'Rosuvastatina 10mg',dosis:'1 comprimido',color_idx:1,tomas:[{id:3,hora:'21:00'}]},
-       {id:3,nombre:'Aspirina 100mg',dosis:'1 comprimido',color_idx:2,tomas:[{id:4,hora:'08:00'}]},
-       {id:4,nombre:'Omeprazol 20mg',dosis:'1 cápsula en ayunas',color_idx:3,tomas:[{id:5,hora:'07:30'}]}
-     ],
-     eventuales:[{id:1,nombre:'Ibuprofeno 400mg',indicacion:'Dolor / Fiebre',historial:[{id:1,fecha:'2025-03-10',motivo:'Dolor de cabeza',observaciones:''},{id:2,fecha:'2025-04-02',motivo:'Fiebre 38.5°',observaciones:''}]}],
-     presion:[{id:1,fecha:'2025-04-20',sistolica:135,diastolica:82,frecuencia:72,estado:'Normal-Alta',observaciones:'Post-actividad'},{id:2,fecha:'2025-04-14',sistolica:128,diastolica:78,frecuencia:68,estado:'Normal',observaciones:''},{id:3,fecha:'2025-04-07',sistolica:142,diastolica:90,frecuencia:76,estado:'Alta',observaciones:'Estrés'}],
-     glucemia:[{id:1,fecha:'2025-04-18',valor:98,momento:'Ayunas',estado:'Normal',observaciones:''},{id:2,fecha:'2025-04-11',valor:145,momento:'Post-prandial',estado:'Alta',observaciones:''}],
-     vacunas:[{id:1,nombre:'Antigripal 2025',fecha:'2025-03-15',lugar:'Farmacia de María',lote:'FLU2025-A',observaciones:''}],
-     obs_clinicas:[{id:1,tipo:'reaccion',fecha:'2024-11-20',texto:'Reacción cutánea leve con Amoxicilina — Suspendido.'},{id:2,tipo:'observacion',fecha:'2025-01-08',texto:'Mareos ocasionales al levantarse. Se sugirió consulta.'}],
-     suscripto:true},
-    {id:2,nombre:'José',apellido:'García',dni:'15.234.567',telefono:'5492644987654',tel_alt:'',email:'jose@mail.com',direccion:'Sarmiento 456',dob:'1948-11-05',obra_social:'OSDE',nro_os:'156-890234',med_cabecera:'Dr. Martínez',med_confianza1:'',med_confianza2:'',observaciones:'Diabético tipo 2.',
-     cronicos:[{id:5,nombre:'Metformina 850mg',dosis:'1 comprimido',color_idx:4,tomas:[{id:6,hora:'08:00'},{id:7,hora:'13:00'},{id:8,hora:'20:00'}]},{id:6,nombre:'Enalapril 10mg',dosis:'1 comprimido',color_idx:5,tomas:[{id:9,hora:'08:00'}]},{id:7,nombre:'Amlodipina 5mg',dosis:'1 comprimido',color_idx:6,tomas:[{id:10,hora:'20:00'}]}],
-     eventuales:[],presion:[{id:4,fecha:'2025-04-19',sistolica:148,diastolica:92,frecuencia:80,estado:'Alta',observaciones:''}],
-     glucemia:[{id:3,fecha:'2025-04-19',valor:186,momento:'Ayunas',estado:'Alta',observaciones:''},{id:4,fecha:'2025-04-12',valor:112,momento:'Ayunas',estado:'Normal',observaciones:''}],
-     vacunas:[{id:3,nombre:'Antigripal 2025',fecha:'2025-03-20',lugar:'Farmacia de María',lote:'FLU2025-B',observaciones:''}],
-     obs_clinicas:[],suscripto:false},
-    {id:3,nombre:'Ana',apellido:'Rodríguez',dni:'28.901.234',telefono:'5492644555777',tel_alt:'',email:'',direccion:'Belgrano 890',dob:'1965-07-22',obra_social:'Swiss Medical',nro_os:'SM-445566',med_cabecera:'Dra. Gómez',med_confianza1:'Dr. Ruiz (Endocrinólogo)',med_confianza2:'',observaciones:'Hipotiroidismo. Toma tiroides en ayunas.',
-     cronicos:[{id:8,nombre:'Levotiroxina 50mcg',dosis:'1 comprimido en ayunas',color_idx:7,tomas:[{id:11,hora:'07:00'}]},{id:9,nombre:'Calcio + Vitamina D',dosis:'1 comprimido',color_idx:8,tomas:[{id:12,hora:'12:00'}]}],
-     eventuales:[],presion:[],glucemia:[],
-     vacunas:[],obs_clinicas:[{id:3,tipo:'observacion',fecha:'2025-02-14',texto:'Cansancio. Se ajustó dosis de Levotiroxina.'}],suscripto:true}
-  ],
-  usuarios:[
-    {id:1,nombre:'Dueño Farmacia',email:'admin@farmaciademia.com',rol:'owner'},
-    {id:2,nombre:'Laura Empleada',email:'laura@farmaciademia.com',rol:'staff'}
-  ]
-};
-
-// ── NOTIFICACIONES GLOBALES (localStorage) ────────────
-// Estructura: {id, paciente_id, paciente_nombre, paciente_tel, mensaje, fecha, hora, canal:'push'|'wa', estado:'pendiente'|'lista'|'enviada', creado_en}
-
-function loadNotifs() {
-  try { return JSON.parse(localStorage.getItem(NOTIFS_KEY)) || []; } catch(e) { return []; }
+// ── BASE DE DATOS ─────────────────────────────────────────────
+var DB;
+function loadDB(){
+  try{DB=JSON.parse(localStorage.getItem(DB_KEY))||defaultDB();}catch(e){DB=defaultDB();}
+  if(!DB.usuarios)DB.usuarios=[];
+  if(!DB.pacientes)DB.pacientes=[];
+  // Asegurar usuario dueño siempre existe
+  if(!DB.usuarios.find(function(u){return u.rol==='owner';})){
+    DB.usuarios.push({
+      id:1,nombre:'Dueño Farmacia',
+      email:'admin@farmaciademia.com',
+      pass:hashPass('farmacia2024'),
+      rol:'owner',
+      pregunta:'¿Cuál es el nombre de tu primera mascota?',
+      respuesta:hashPass('mascota')
+    });
+    saveDB();
+  }
 }
-function saveNotifs(ns) { localStorage.setItem(NOTIFS_KEY, JSON.stringify(ns)); }
+function saveDB(){localStorage.setItem(DB_KEY,JSON.stringify(DB));}
+function defaultDB(){return{usuarios:[{id:1,nombre:'Dueño Farmacia',email:'admin@farmaciademia.com',pass:hashPass('farmacia2024'),rol:'owner',pregunta:'¿Cuál es el nombre de tu primera mascota?',respuesta:hashPass('mascota')}],pacientes:[]};}
 
-// ── ESTADO DE NOTIFICACIONES ──────────────────────────
-// Actualiza 'pendiente' → 'lista' si ya llegó la fecha/hora
-function actualizarEstados() {
-  var ns = loadNotifs();
-  var now = new Date();
-  var changed = false;
-  ns.forEach(function(n) {
-    if (n.estado === 'pendiente') {
-      var dt = new Date(n.fecha + 'T' + n.hora + ':00');
-      if (now >= dt) { n.estado = 'lista'; changed = true; }
-    }
-  });
-  if (changed) saveNotifs(ns);
-  return ns;
+// Hash simple (no criptográfico, suficiente para demo local)
+function hashPass(s){var h=0;for(var i=0;i<s.length;i++){h=((h<<5)-h)+s.charCodeAt(i);h=h&h;}return h.toString(36);}
+
+// ── NOTIFICACIONES ────────────────────────────────────────────
+function loadNotifs(){try{return JSON.parse(localStorage.getItem(NOTIFS_KEY))||[];}catch(e){return[];}}
+function saveNotifs(ns){localStorage.setItem(NOTIFS_KEY,JSON.stringify(ns));}
+function actualizarEstados(){
+  var ns=loadNotifs();var now=new Date();var changed=false;
+  ns.forEach(function(n){if(n.estado==='pendiente'){var dt=new Date(n.fecha+'T'+n.hora+':00');if(now>=dt){n.estado='lista';changed=true;}}});
+  if(changed)saveNotifs(ns);return ns;
 }
 
-// ── BADGE ─────────────────────────────────────────────
-function updateBadge() {
-  var ns = actualizarEstados();
-  var listas = ns.filter(function(n){ return n.estado === 'lista'; }).length;
-  // Badge sidebar
-  var badge = document.getElementById('notif-badge');
-  if (badge) { if(listas>0){badge.textContent=listas;badge.style.display='';}else{badge.style.display='none';} }
-  // Badge barra móvil
-  var mbadge = document.getElementById('mn-badge');
-  if (mbadge) { if(listas>0){mbadge.textContent=listas;mbadge.style.display='';}else{mbadge.style.display='none';} }
+// ── SESIÓN ────────────────────────────────────────────────────
+var CU=null;
+function loadSession(){
+  try{var s=JSON.parse(localStorage.getItem(SES_KEY));if(s&&s.id){CU=DB.usuarios.find(function(u){return u.id===s.id;});}}catch(e){}
+}
+function saveSession(){localStorage.setItem(SES_KEY,JSON.stringify({id:CU.id}));}
+function clearSession(){localStorage.removeItem(SES_KEY);CU=null;}
+
+// ── HELPERS ───────────────────────────────────────────────────
+var _pat=null,CPI=null,CMod='cronicos';
+function uid(){return Date.now()+(Math.random()*9999|0);}
+function tISO(){return new Date().toISOString().split('T')[0];}
+function addD(iso,n){var d=new Date(iso+'T00:00:00');d.setDate(d.getDate()+n);return d.toISOString().split('T')[0];}
+function d2s(iso){if(!iso)return'—';var p=iso.split('T')[0].split('-');return p[2]+'/'+p[1]+'/'+p[0];}
+function ini(p){return((p.nombre||'?')[0]+(p.apellido||'?')[0]).toUpperCase();}
+var _tt;
+function toast(msg){var t=document.getElementById('toast-msg');clearTimeout(_tt);t.textContent=msg;t.classList.add('show');_tt=setTimeout(function(){t.classList.remove('show');},3000);}
+function updateBadge(){
+  var ns=actualizarEstados();
+  var listas=ns.filter(function(n){return n.estado==='lista';}).length;
+  var b=document.getElementById('notif-badge');if(b){if(listas>0){b.textContent=listas;b.style.display='';}else b.style.display='none';}
+  var mb=document.getElementById('mn-badge');if(mb){if(listas>0){mb.textContent=listas;mb.style.display='';}else mb.style.display='none';}
 }
 
-// ── HELPERS ───────────────────────────────────────────
-function uid() { return Date.now() + (Math.random()*9999|0); }
-function tISO() { return new Date().toISOString().split('T')[0]; }
-function nowHHMM() { var n=new Date(); return String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0'); }
-function d2s(iso) { if(!iso)return'—'; var p=iso.split('T')[0].split('-'); return p[2]+'/'+p[1]+'/'+p[0]; }
-function addD(iso,n) { var d=new Date(iso+'T00:00:00'); d.setDate(d.getDate()+n); return d.toISOString().split('T')[0]; }
-function ini(p) { return ((p.nombre||'?')[0]+(p.apellido||'?')[0]).toUpperCase(); }
-function getPin() { return localStorage.getItem(PIN_KEY)||'1234'; }
-
-// ── LOGO ──────────────────────────────────────────────
-function loadLogo() { var l=localStorage.getItem(LOGO_KEY); if(l) applyLogo(l); }
-function applyLogo(src) { var ic=document.getElementById('sl-ic'); ic.innerHTML='<img src="'+src+'" style="width:100%;height:100%;object-fit:contain;border-radius:6px;"/>'; }
-function uploadLogo(input) {
-  var f=input.files[0]; if(!f)return;
+// ── LOGO ──────────────────────────────────────────────────────
+function loadLogo(){var l=localStorage.getItem(LOGO_KEY);if(l)applyLogo(l);}
+function applyLogo(src){
+  var ic=document.getElementById('sl-ic');if(ic)ic.innerHTML='<img src="'+src+'" style="width:100%;height:100%;object-fit:contain;border-radius:6px;"/>';
+  var lw=document.getElementById('l-logo-wrap');if(lw)lw.innerHTML='<img src="'+src+'" class="l-logo-img"/>';
+}
+function uploadLogo(input){
+  var f=input.files[0];if(!f)return;
   var r=new FileReader();
-  r.onload=function(e){
-    localStorage.setItem(LOGO_KEY,e.target.result);
-    applyLogo(e.target.result);
-    // preview en config
-    var prev=document.getElementById('logo-preview');
-    if(prev){prev.src=e.target.result;prev.style.display='';}
-    var lbl=document.getElementById('logo-lbl-config');
-    if(lbl)lbl.textContent='📷 Cambiar logo';
-    toast('✅ Logo guardado');
-  };
+  r.onload=function(e){localStorage.setItem(LOGO_KEY,e.target.result);applyLogo(e.target.result);rConfig(document.getElementById('CA'));toast('✅ Logo guardado');};
   r.readAsDataURL(f);
 }
 
-// ── SIDEBAR MÓVIL ─────────────────────────────────────
-function toggleSB() {
-  var sb  = document.getElementById('SB');
-  var ov  = document.getElementById('sb-overlay');
-  var open = sb.classList.contains('open');
-  if (open) { sb.classList.remove('open'); ov.classList.remove('open'); }
-  else       { sb.classList.add('open');    ov.classList.add('open'); }
+// ══════════════════════════════════════════════════════════════
+//  LOGIN Y SEGURIDAD
+// ══════════════════════════════════════════════════════════════
+
+function showLogin(){
+  document.getElementById('lf-main').style.display='';
+  document.getElementById('lf-recovery').style.display='none';
+  document.getElementById('lf-newpass').style.display='none';
+  document.getElementById('l-err').textContent='';
 }
-function closeSB() {
-  document.getElementById('SB').classList.remove('open');
-  document.getElementById('sb-overlay').classList.remove('open');
+function showRecovery(){
+  var owner=DB.usuarios.find(function(u){return u.rol==='owner';});
+  document.getElementById('rec-q').value=owner?owner.pregunta:'Sin pregunta configurada';
+  document.getElementById('rec-a').value='';
+  document.getElementById('rec-err').textContent='';
+  document.getElementById('lf-main').style.display='none';
+  document.getElementById('lf-recovery').style.display='';
+  document.getElementById('lf-newpass').style.display='none';
+}
+function showNewPass(){
+  document.getElementById('np-pass').value='';
+  document.getElementById('np-pass2').value='';
+  document.getElementById('np-err').textContent='';
+  document.getElementById('lf-recovery').style.display='none';
+  document.getElementById('lf-newpass').style.display='';
 }
 
-// ── NAV ───────────────────────────────────────────────
-var _pat = null;
-var CPI  = null;
-var CMod = 'cronicos';
+function doLogin(){
+  var email=document.getElementById('lu').value.trim().toLowerCase();
+  var pass=document.getElementById('lp').value;
+  if(!email||!pass){document.getElementById('l-err').textContent='Completá usuario y contraseña.';return;}
+  var found=DB.usuarios.find(function(u){return u.email===email&&u.pass===hashPass(pass);});
+  if(!found){document.getElementById('l-err').textContent='Email o contraseña incorrectos.';return;}
+  CU=found;saveSession();enterApp();
+}
 
-function SP(page) {
+function doRecovery(){
+  var resp=document.getElementById('rec-a').value.trim().toLowerCase();
+  if(!resp){document.getElementById('rec-err').textContent='Escribí tu respuesta.';return;}
+  var owner=DB.usuarios.find(function(u){return u.rol==='owner';});
+  if(!owner||owner.respuesta!==hashPass(resp)){
+    document.getElementById('rec-err').textContent='Respuesta incorrecta. Intentá de nuevo.';return;
+  }
+  showNewPass();
+}
+
+function doNewPass(){
+  var p1=document.getElementById('np-pass').value;
+  var p2=document.getElementById('np-pass2').value;
+  if(p1.length<6){document.getElementById('np-err').textContent='Mínimo 6 caracteres.';return;}
+  if(p1!==p2){document.getElementById('np-err').textContent='Las contraseñas no coinciden.';return;}
+  var owner=DB.usuarios.find(function(u){return u.rol==='owner';});
+  owner.pass=hashPass(p1);saveDB();
+  toast('✅ Contraseña actualizada. Ya podés ingresar.');
+  showLogin();
+}
+
+function doLogout(){
+  clearSession();
+  document.getElementById('APP').style.display='none';
+  document.getElementById('LS').style.display='';
+  showLogin();
+  document.getElementById('lu').value='';
+  document.getElementById('lp').value='';
+}
+
+function enterApp(){
+  document.getElementById('LS').style.display='none';
+  document.getElementById('APP').style.display='';
+  var isOwner=CU.rol==='owner';
+  var isAdmin=CU.rol==='owner'||CU.rol==='staff';
+  document.getElementById('N-pacientes').style.display=isAdmin?'':'none';
+  document.getElementById('N-nuevo').style.display=isAdmin?'':'none';
+  document.getElementById('N-notifpanel').style.display=isAdmin?'':'none';
+  document.getElementById('N-usuarios').style.display=isOwner?'':'none';
+  document.getElementById('N-config').style.display=isAdmin?'':'none';
+  document.getElementById('GS-wrap').style.display=isAdmin?'':'none';
+  document.getElementById('UAV').textContent=(CU.nombre||'?')[0].toUpperCase();
+  document.getElementById('UNAME').textContent=CU.nombre;
+  document.getElementById('UROLE').textContent=isOwner?'👑 Dueño':'💼 Empleado';
+  loadLogo();
+  actualizarEstados();updateBadge();
+  if(isAdmin)SP('pacientes');
+  function checkMobile(){var isMobile=window.innerWidth<=700;document.getElementById('mobile-nav').style.display=isMobile?'flex':'none';}
+  checkMobile();window.addEventListener('resize',checkMobile);
+  setInterval(function(){actualizarEstados();updateBadge();if(document.getElementById('N-notifpanel').classList.contains('act'))rNotifPanel(document.getElementById('CA'));},60000);
+}
+
+// ── SIDEBAR MÓVIL ────────────────────────────────────────────
+function toggleSB(){var sb=document.getElementById('SB'),ov=document.getElementById('sb-overlay');var open=sb.classList.contains('open');if(open){sb.classList.remove('open');ov.classList.remove('open');}else{sb.classList.add('open');ov.classList.add('open');}}
+function closeSB(){document.getElementById('SB').classList.remove('open');document.getElementById('sb-overlay').classList.remove('open');}
+
+// ── NAV ──────────────────────────────────────────────────────
+function SP(page){
   document.querySelectorAll('.ni').forEach(function(el){el.classList.remove('act');});
-  var nel=document.getElementById('N-'+page); if(nel)nel.classList.add('act');
-
-  // Sincronizar barra inferior móvil
   document.querySelectorAll('.mn-item').forEach(function(el){el.classList.remove('act');});
-  var mnel=document.getElementById('MN-'+page); if(mnel)mnel.classList.add('act');
-
+  var nel=document.getElementById('N-'+page);if(nel)nel.classList.add('act');
+  var mnel=document.getElementById('MN-'+page);if(mnel)mnel.classList.add('act');
   var titles={pacientes:'Pacientes',nuevo:'Nuevo Paciente',notifpanel:'Notificaciones',config:'Configuración',detalle:'Ficha del Paciente',usuarios:'Usuarios'};
   document.getElementById('TT').textContent=titles[page]||page;
   document.getElementById('GS-wrap').style.display=page==='pacientes'?'':'none';
-
-  // Cerrar sidebar en móvil al navegar
-  closeSB();
-
-  actualizarEstados();
-  updateBadge();
+  closeSB();actualizarEstados();updateBadge();
   var ca=document.getElementById('CA');
-  if(page==='pacientes') rPacientes(ca);
-  else if(page==='nuevo') rNuevo(ca);
-  else if(page==='notifpanel') rNotifPanel(ca);
-  else if(page==='config') rConfig(ca);
-  else if(page==='detalle') rDetalle(ca,CPI);
-  else if(page==='usuarios') rUsuarios(ca);
+  if(page==='pacientes')rPacientes(ca);
+  else if(page==='nuevo')rNuevo(ca);
+  else if(page==='notifpanel')rNotifPanel(ca);
+  else if(page==='config')rConfig(ca);
+  else if(page==='detalle')rDetalle(ca,CPI);
+  else if(page==='usuarios')rUsuarios(ca);
 }
 function filterP(){rPacientes(document.getElementById('CA'));}
 
-// ── MODAL ─────────────────────────────────────────────
-function OM(title,body,footer) {
+// ── MODAL ────────────────────────────────────────────────────
+function OM(title,body,footer){
   var d=document.createElement('div');d.className='mbg';d.id='MOD';
   d.innerHTML='<div class="modal"><div class="mhd"><h3>'+title+'</h3><button class="mcl" onclick="CM()">✕</button></div><div class="mbd">'+body+'</div><div class="mft">'+footer+'</div></div>';
   d.addEventListener('click',function(e){if(e.target===d)CM();});
@@ -460,22 +525,43 @@ function OM(title,body,footer) {
 }
 function CM(){var m=document.getElementById('MOD');if(m)m.remove();}
 
-var _tt;
-function toast(msg){
-  var t=document.getElementById('toast-msg');clearTimeout(_tt);
-  t.textContent=msg;t.classList.add('show');
-  _tt=setTimeout(function(){t.classList.remove('show');},3000);
+// ── CONFIRMAR CON CONTRASEÑA (solo dueño puede eliminar) ──────
+function confirmDelete(msg, cb){
+  if(CU.rol!=='owner'){toast('⛔ Solo el dueño puede eliminar datos.');return;}
+  var d=document.createElement('div');d.className='confirm-overlay';d.id='CONF';
+  d.innerHTML='<div class="confirm-box">'+
+    '<h3>🔐 Confirmar eliminación</h3>'+
+    '<p>'+msg+'<br><strong>Esta acción no se puede deshacer.</strong></p>'+
+    '<div class="fp"><label>Contraseña del dueño</label><input type="password" id="conf-pass" placeholder="Tu contraseña"/></div>'+
+    '<div class="confirm-err" id="conf-err"></div>'+
+    '<div style="display:flex;gap:9px;justify-content:center;">'+
+      '<button class="btn btn-ghost" onclick="closeConf()">Cancelar</button>'+
+      '<button class="btn btn-danger" onclick="runConf()">Eliminar</button>'+
+    '</div></div>';
+  d.addEventListener('click',function(e){if(e.target===d)closeConf();});
+  document.body.appendChild(d);
+  window._confCB=cb;
+  setTimeout(function(){var i=document.getElementById('conf-pass');if(i)i.focus();},100);
+}
+function closeConf(){var c=document.getElementById('CONF');if(c)c.remove();window._confCB=null;}
+function runConf(){
+  var pass=document.getElementById('conf-pass').value;
+  if(!pass){document.getElementById('conf-err').textContent='Ingresá tu contraseña.';return;}
+  if(CU.pass!==hashPass(pass)){document.getElementById('conf-err').textContent='Contraseña incorrecta.';return;}
+  closeConf();if(window._confCB)window._confCB();
 }
 
-// ── PACIENTES ─────────────────────────────────────────
-function rPacientes(ca) {
+// ══════════════════════════════════════════════════════════════
+//  PACIENTES
+// ══════════════════════════════════════════════════════════════
+function rPacientes(ca){
   var q=(document.getElementById('GS').value||'').toLowerCase();
   var list=DB.pacientes.filter(function(p){return!q||(p.nombre+' '+p.apellido+' '+(p.dni||'')).toLowerCase().includes(q);});
   var h='<div style="display:flex;gap:9px;margin-bottom:13px;align-items:center;" class="no-print">'+
     '<span style="font-size:.79rem;color:var(--gris);">'+list.length+' paciente(s)</span>'+
     '<button class="btn btn-primary btn-sm" style="margin-left:auto;" onclick="SP(\'nuevo\')">＋ Nuevo</button></div>'+
     '<div class="pgrid">';
-  if(!list.length)h+='<div class="empty" style="grid-column:1/-1"><span class="ei">🔍</span><p>Sin resultados.</p></div>';
+  if(!list.length)h+='<div class="empty" style="grid-column:1/-1"><span class="ei">'+(q?'🔍':'👥')+'</span><p>'+(q?'Sin resultados para "'+q+'"':'No hay pacientes. Tocá "＋ Nuevo" para agregar el primero.')+'</p></div>';
   list.forEach(function(p){
     h+='<div class="pc" onclick="openP('+p.id+')">'+
       '<div class="pc-top"><div class="pav">'+ini(p)+'</div>'+
@@ -485,27 +571,29 @@ function rPacientes(ca) {
       '<div class="prow">📍 '+(p.direccion||'—')+'</div>'+
       '<div class="pbadges">'+
         (p.cronicos.length?'<span class="mb mb-c">💊 '+p.cronicos.length+' crón.</span>':'')+
-        (p.presion.length?'<span class="mb mb-s">💓 TA</span>':'')+
-        (p.suscripto?'<span class="mb mb-ok">🔔 Suscripto</span>':'')+
+        (p.presion&&p.presion.length?'<span class="mb mb-s">💓 TA</span>':'')+
+        (p.glucemia&&p.glucemia.length?'<span class="mb" style="color:#c86e00;border-color:#c86e00;background:#fff3e0;">🩸</span>':'')+
       '</div>'+
       '<div class="pc-ac no-print" onclick="event.stopPropagation()">'+
         '<button class="btn btn-outline btn-sm" onclick="openP('+p.id+')">Ver Ficha</button>'+
         '<button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();demoLink('+p.id+')" title="Link suscripción">🔗</button>'+
-        '<button class="btn btn-danger btn-sm" onclick="event.stopPropagation();delPac('+p.id+')">🗑</button>'+
+        (CU.rol==='owner'?'<button class="btn btn-danger btn-sm" onclick="event.stopPropagation();delPac('+p.id+')">🗑</button>':'')+
       '</div></div>';
   });
   ca.innerHTML=h+'</div>';
 }
-function demoLink(pid){var p=DB.pacientes.find(function(x){return x.id===pid;});toast('🔗 Link: farmaavisa.com/suscribir/token-'+p.id+' (activo al subir a Railway)');}
+function demoLink(pid){var p=DB.pacientes.find(function(x){return x.id===pid;});toast('🔗 Link de suscripción — disponible al subir el sistema completo a Railway.');}
 function openP(pid){CPI=pid;CMod='cronicos';SP('detalle');}
 function delPac(pid){
-  reqPin('Eliminar paciente — ingresá tu PIN',function(){
-    DB.pacientes=DB.pacientes.filter(function(p){return p.id!==pid;});
-    SP('pacientes');toast('Paciente eliminado');
+  var p=DB.pacientes.find(function(x){return x.id===pid;});
+  confirmDelete('Vas a eliminar a <strong>'+p.nombre+' '+p.apellido+'</strong> y todos sus datos.',function(){
+    DB.pacientes=DB.pacientes.filter(function(x){return x.id!==pid;});
+    var ns=loadNotifs().filter(function(n){return n.paciente_id!==pid;});saveNotifs(ns);
+    saveDB();SP('pacientes');toast('Paciente eliminado');
   });
 }
 
-// ── NUEVO PACIENTE ─────────────────────────────────────
+// ── NUEVO PACIENTE ────────────────────────────────────────────
 function rNuevo(ca){
   ca.innerHTML='<div class="card"><div class="card-hd"><span>➕</span><h3>Nuevo Paciente</h3></div><div class="card-bd">'+
     '<div class="fg">'+
@@ -533,77 +621,52 @@ function savNuevo(){
   var n=document.getElementById('np_n').value.trim(),a=document.getElementById('np_a').value.trim();
   if(!n||!a){toast('Nombre y apellido son obligatorios');return;}
   var p={id:uid(),nombre:n,apellido:a,
-    dni:document.getElementById('np_dni').value.trim(),telefono:document.getElementById('np_tel').value.trim(),
-    tel_alt:document.getElementById('np_tel2').value.trim(),email:document.getElementById('np_email').value.trim(),
-    direccion:document.getElementById('np_dir').value.trim(),dob:document.getElementById('np_dob').value,
-    obra_social:document.getElementById('np_os').value.trim(),nro_os:document.getElementById('np_nos').value.trim(),
-    med_cabecera:document.getElementById('np_mc').value.trim(),med_confianza1:document.getElementById('np_m1').value.trim(),
-    med_confianza2:document.getElementById('np_m2').value.trim(),observaciones:document.getElementById('np_obs').value.trim(),
-    cronicos:[],eventuales:[],presion:[],glucemia:[],vacunas:[],obs_clinicas:[],suscripto:false};
-  DB.pacientes.push(p);toast('✅ Paciente guardado');openP(p.id);
+    dni:document.getElementById('np_dni').value.trim(),
+    telefono:document.getElementById('np_tel').value.trim(),
+    tel_alt:document.getElementById('np_tel2').value.trim(),
+    email:document.getElementById('np_email').value.trim(),
+    direccion:document.getElementById('np_dir').value.trim(),
+    dob:document.getElementById('np_dob').value,
+    obra_social:document.getElementById('np_os').value.trim(),
+    nro_os:document.getElementById('np_nos').value.trim(),
+    med_cabecera:document.getElementById('np_mc').value.trim(),
+    med_confianza1:document.getElementById('np_m1').value.trim(),
+    med_confianza2:document.getElementById('np_m2').value.trim(),
+    observaciones:document.getElementById('np_obs').value.trim(),
+    cronicos:[],eventuales:[],presion:[],glucemia:[],vacunas:[],obs_clinicas:[]};
+  DB.pacientes.push(p);saveDB();toast('✅ Paciente guardado');openP(p.id);
 }
 
-// ── DETALLE ────────────────────────────────────────────
+// ── DETALLE ───────────────────────────────────────────────────
 function rDetalle(ca,pid){
   var p=DB.pacientes.find(function(x){return x.id===pid;});if(!p)return;
   _pat=p;
-  var mods=[
-    {id:'cronicos',icon:'💊',label:'Med. Crónicos'},
-    {id:'eventuales',icon:'📋',label:'Eventuales'},
-    {id:'presion',icon:'💓',label:'Presión'},
-    {id:'glucemia',icon:'🩸',label:'Glucemia'},
-    {id:'vacunas',icon:'💉',label:'Vacunas'},
-    {id:'adversos',icon:'📝',label:'Obs./Efectos'},
-    {id:'notifev',icon:'🔔',label:'Notif. Eventuales'}
-  ];
+  var mods=[{id:'cronicos',icon:'💊',label:'Med. Crónicos'},{id:'eventuales',icon:'📋',label:'Eventuales'},{id:'presion',icon:'💓',label:'Presión'},{id:'glucemia',icon:'🩸',label:'Glucemia'},{id:'vacunas',icon:'💉',label:'Vacunas'},{id:'adversos',icon:'📝',label:'Obs./Efectos'},{id:'notifev',icon:'🔔',label:'Notif. Eventuales'}];
   var tabsH=mods.map(function(m){return'<div class="mtab'+(CMod===m.id?' active':'')+'" onclick="swMod(\''+m.id+'\')">'+m.icon+' '+m.label+'</div>';}).join('');
   ca.innerHTML=
     '<div style="display:flex;gap:7px;margin-bottom:11px;flex-wrap:wrap;" class="no-print">'+
       '<button class="btn btn-ghost btn-sm" onclick="SP(\'pacientes\')">← Volver</button>'+
       '<button class="btn btn-info btn-sm" onclick="window.print()">🖨 Imprimir</button>'+
       '<button class="btn btn-outline btn-sm" onclick="oEditP()">✏️ Editar</button>'+
-      '<button class="btn btn-warn btn-sm" onclick="demoLink('+pid+')">🔗 Link suscripción</button>'+
-      (p.suscripto?'<span class="mb mb-ok" style="display:inline-flex;align-items:center;padding:4px 10px;">🔔 Notif. activas</span>':'')+
+      (CU.rol==='owner'?'<button class="btn btn-danger btn-sm" onclick="delPac('+pid+')">🗑 Eliminar paciente</button>':'')+
     '</div>'+
-    '<div class="pdhdr">'+
-      '<div class="pdav">'+ini(p)+'</div>'+
-      '<div class="pdi" style="flex:1">'+
-        '<h2>'+p.nombre+' '+p.apellido+'</h2>'+
+    '<div class="pdhdr"><div class="pdav">'+ini(p)+'</div>'+
+      '<div class="pdi" style="flex:1"><h2>'+p.nombre+' '+p.apellido+'</h2>'+
         '<div class="dfields">'+
           '<div class="df"><label>DNI</label><span>'+(p.dni||'—')+'</span></div>'+
           '<div class="df"><label>Teléfono</label><span>'+(p.telefono||'—')+'</span></div>'+
           '<div class="df"><label>Obra Social</label><span>'+(p.obra_social||'—')+'</span></div>'+
+          '<div class="df"><label>Nro. OS</label><span>'+(p.nro_os||'—')+'</span></div>'+
           '<div class="df"><label>Médico Cabecera</label><span>'+(p.med_cabecera||'—')+'</span></div>'+
-          '<div class="df"><label>Médico 2</label><span>'+(p.med_confianza1||'—')+'</span></div>'+
           '<div class="df"><label>Email</label><span>'+(p.email||'—')+'</span></div>'+
           (p.observaciones?'<div class="df full"><label>⚠️ Observaciones</label><span>'+p.observaciones+'</span></div>':'')+
-        '</div>'+
-      '</div>'+
-    '</div>'+
-    '<div class="mtabs no-print">'+tabsH+'</div>'+
-    '<div id="MC"></div>';
+        '</div></div></div>'+
+    '<div class="mtabs no-print">'+tabsH+'</div><div id="MC"></div>';
   rMod(CMod);
 }
-function swMod(mod){
-  CMod=mod;
-  document.querySelectorAll('.mtab').forEach(function(t){t.classList.remove('active');});
-  var mods=['cronicos','eventuales','presion','glucemia','vacunas','adversos','notifev'];
-  var tabs=document.querySelectorAll('.mtab');
-  var idx=mods.indexOf(mod);if(tabs[idx])tabs[idx].classList.add('active');
-  rMod(mod);
-}
-function rMod(mod){
-  var mc=document.getElementById('MC');if(!mc)return;
-  if(mod==='cronicos')rCronicos(mc);
-  else if(mod==='eventuales')rEventuales(mc);
-  else if(mod==='presion')rPresion(mc);
-  else if(mod==='glucemia')rGlucemia(mc);
-  else if(mod==='vacunas')rVacunas(mc);
-  else if(mod==='adversos')rAdversos(mc);
-  else if(mod==='notifev')rNotifEv(mc);
-}
+function swMod(mod){CMod=mod;document.querySelectorAll('.mtab').forEach(function(t){t.classList.remove('active');});var mods=['cronicos','eventuales','presion','glucemia','vacunas','adversos','notifev'];var tabs=document.querySelectorAll('.mtab');var idx=mods.indexOf(mod);if(tabs[idx])tabs[idx].classList.add('active');rMod(mod);}
+function rMod(mod){var mc=document.getElementById('MC');if(!mc)return;if(mod==='cronicos')rCronicos(mc);else if(mod==='eventuales')rEventuales(mc);else if(mod==='presion')rPresion(mc);else if(mod==='glucemia')rGlucemia(mc);else if(mod==='vacunas')rVacunas(mc);else if(mod==='adversos')rAdversos(mc);else if(mod==='notifev')rNotifEv(mc);}
 
-// ── EDITAR PACIENTE ────────────────────────────────────
 function oEditP(){
   var p=_pat;
   OM('✏️ Editar — '+p.nombre+' '+p.apellido,
@@ -622,32 +685,23 @@ function oEditP(){
       '<div class="fp"><label>Médico 3</label><input id="ep_m2" value="'+(p.med_confianza2||'')+'"/></div>'+
       '<div class="fp full"><label>Observaciones</label><textarea id="ep_obs">'+(p.observaciones||'')+'</textarea></div>'+
     '</div>',
-    '<button class="btn btn-ghost" onclick="CM()">Cancelar</button>'+
-    '<button class="btn btn-primary" onclick="savEditP()">Guardar</button>');
+    '<button class="btn btn-ghost" onclick="CM()">Cancelar</button><button class="btn btn-primary" onclick="savEditP()">Guardar</button>');
 }
 function savEditP(){
-  _pat.nombre=document.getElementById('ep_n').value.trim();
-  _pat.apellido=document.getElementById('ep_a').value.trim();
-  _pat.dni=document.getElementById('ep_dni').value.trim();
-  _pat.telefono=document.getElementById('ep_tel').value.trim();
-  _pat.tel_alt=document.getElementById('ep_tel2').value.trim();
-  _pat.email=document.getElementById('ep_email').value.trim();
-  _pat.direccion=document.getElementById('ep_dir').value.trim();
-  _pat.obra_social=document.getElementById('ep_os').value.trim();
-  _pat.nro_os=document.getElementById('ep_nos').value.trim();
-  _pat.med_cabecera=document.getElementById('ep_mc').value.trim();
-  _pat.med_confianza1=document.getElementById('ep_m1').value.trim();
-  _pat.med_confianza2=document.getElementById('ep_m2').value.trim();
+  _pat.nombre=document.getElementById('ep_n').value.trim();_pat.apellido=document.getElementById('ep_a').value.trim();
+  _pat.dni=document.getElementById('ep_dni').value.trim();_pat.telefono=document.getElementById('ep_tel').value.trim();
+  _pat.tel_alt=document.getElementById('ep_tel2').value.trim();_pat.email=document.getElementById('ep_email').value.trim();
+  _pat.direccion=document.getElementById('ep_dir').value.trim();_pat.obra_social=document.getElementById('ep_os').value.trim();
+  _pat.nro_os=document.getElementById('ep_nos').value.trim();_pat.med_cabecera=document.getElementById('ep_mc').value.trim();
+  _pat.med_confianza1=document.getElementById('ep_m1').value.trim();_pat.med_confianza2=document.getElementById('ep_m2').value.trim();
   _pat.observaciones=document.getElementById('ep_obs').value.trim();
-  CM();rDetalle(document.getElementById('CA'),_pat.id);toast('✅ Actualizado');
+  saveDB();CM();rDetalle(document.getElementById('CA'),_pat.id);toast('✅ Actualizado');
 }
 
-// ── MEDICAMENTOS CRÓNICOS ──────────────────────────────
+// ── MED CRÓNICOS ──────────────────────────────────────────────
 function rCronicos(mc){
   var p=_pat;
-  var h='<div class="card"><div class="card-hd"><span>💊</span><h3>Medicamentos Crónicos</h3>'+
-    '<div style="margin-left:auto;" class="no-print"><button class="btn btn-primary btn-sm" onclick="oAddCron()">+ Agregar</button></div>'+
-    '</div><div class="card-bd">';
+  var h='<div class="card"><div class="card-hd"><span>💊</span><h3>Medicamentos Crónicos</h3><div style="margin-left:auto;" class="no-print"><button class="btn btn-primary btn-sm" onclick="oAddCron()">+ Agregar</button></div></div><div class="card-bd">';
   if(!p.cronicos.length)h+='<div class="empty"><span class="ei">💊</span><p>Sin medicamentos crónicos.</p></div>';
   p.cronicos.forEach(function(m,i){
     var col=MCL[(m.color_idx!==undefined?m.color_idx:i)%MCL.length];
@@ -660,11 +714,8 @@ function rCronicos(mc){
           '<button class="btn btn-ghost btn-sm" onclick="oEditCron('+i+')">✏️</button>'+
           '<button class="btn btn-danger btn-sm" onclick="dCron('+m.id+')">🗑</button>'+
         '</div></div>'+
-      '<div style="padding:10px 13px;">'+
-        '<div style="font-size:.71rem;color:var(--gris);text-transform:uppercase;font-weight:600;margin-bottom:6px;">⏰ Horarios de notificación</div>'+
-        '<div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;">'+tomasH+
-          '<button class="btn btn-ghost btn-sm no-print" onclick="oAddToma('+m.id+')">+ Horario</button>'+
-        '</div></div></div>';
+      '<div style="padding:10px 13px;"><div style="font-size:.71rem;color:var(--gris);text-transform:uppercase;font-weight:600;margin-bottom:6px;">⏰ Horarios de notificación</div>'+
+        '<div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;">'+tomasH+'<button class="btn btn-ghost btn-sm no-print" onclick="oAddToma('+m.id+')">+ Horario</button></div></div></div>';
   });
   mc.innerHTML=h+'</div></div>';
 }
@@ -673,74 +724,35 @@ function oAddCron(){
   OM('💊 Agregar Medicamento Crónico',
     '<div class="fg c1">'+
       '<div class="fp"><label>Nombre *</label><input id="ac_n" placeholder="Ej: Carvedilol 25mg" list="dl_med"/>'+
-        '<datalist id="dl_med"><option value="Losartán"><option value="Enalapril"><option value="Carvedilol"><option value="Metformina"><option value="Omeprazol"><option value="Aspirina"><option value="Amlodipina"><option value="Rosuvastatina"><option value="Levotiroxina"><option value="Furosemida"><option value="Bisoprolol"><option value="Hidroclorotiazida"><option value="Clonazepam"><option value="Ramipril"></datalist>'+
-      '</div>'+
+        '<datalist id="dl_med"><option value="Losartán"><option value="Enalapril"><option value="Carvedilol"><option value="Metformina"><option value="Omeprazol"><option value="Aspirina"><option value="Amlodipina"><option value="Rosuvastatina"><option value="Levotiroxina"><option value="Furosemida"><option value="Bisoprolol"><option value="Hidroclorotiazida"><option value="Clonazepam"><option value="Ramipril"></datalist></div>'+
       '<div class="fp"><label>Dosis</label><input id="ac_d" placeholder="Ej: 1 comprimido"/></div>'+
-      '<div class="fp full"><label>Horarios de notificación</label><div id="ac_tomas"></div>'+
-        '<button class="btn btn-ghost btn-sm" onclick="addTomaForm(\'ac_tomas\')" style="margin-top:5px;">+ Agregar horario</button>'+
-      '</div></div>'+
-    '<div class="tip">💡 Cada horario genera una notificación push al paciente. Si dos medicamentos coinciden en el mismo horario, se agrupa en un solo mensaje.</div>',
-    '<button class="btn btn-ghost" onclick="CM()">Cancelar</button>'+
-    '<button class="btn btn-primary" onclick="savCron('+ci+')">💾 Guardar</button>');
+      '<div class="fp full"><label>Horarios de notificación</label><div id="ac_tomas"></div><button class="btn btn-ghost btn-sm" onclick="addTomaForm(\'ac_tomas\')" style="margin-top:5px;">+ Agregar horario</button></div>'+
+    '</div><div class="tip">💡 Cada horario generará una notificación al paciente.</div>',
+    '<button class="btn btn-ghost" onclick="CM()">Cancelar</button><button class="btn btn-primary" onclick="savCron('+ci+')">💾 Guardar</button>');
   addTomaForm('ac_tomas');
 }
-function addTomaForm(cid){
-  var c=document.getElementById(cid);if(!c)return;
-  var row=document.createElement('div');row.style.cssText='display:flex;align-items:center;gap:8px;margin-bottom:6px;';
-  row.innerHTML='<input type="time" value="08:00" style="padding:6px 9px;border:1.5px solid var(--gc);border-radius:var(--rs);font-family:\'DM Sans\',sans-serif;font-size:.85rem;"/>'+
-    '<button class="btn btn-danger btn-sm" onclick="this.parentElement.remove()">✕</button>';
-  c.appendChild(row);
-}
-function savCron(ci){
-  var n=document.getElementById('ac_n').value.trim();if(!n){toast('Ingresá el nombre');return;}
-  var tomas=[];
-  document.querySelectorAll('#ac_tomas input[type=time]').forEach(function(inp,i){if(inp.value)tomas.push({id:uid(),hora:inp.value});});
-  _pat.cronicos.push({id:uid(),nombre:n,dosis:document.getElementById('ac_d').value.trim(),color_idx:ci,tomas:tomas});
-  CM();rMod('cronicos');toast('✅ Medicamento guardado');
-}
-function oEditCron(idx){
-  var m=_pat.cronicos[idx];
-  var tomasH=(m.tomas||[]).map(function(t){return'<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><input type="time" value="'+t.hora+'" style="padding:6px 9px;border:1.5px solid var(--gc);border-radius:var(--rs);font-family:\'DM Sans\',sans-serif;font-size:.85rem;"/><button class="btn btn-danger btn-sm" onclick="this.parentElement.remove()">✕</button></div>';}).join('');
-  OM('✏️ Editar — '+m.nombre,
-    '<div class="fg c1"><div class="fp"><label>Nombre</label><input id="ec_n" value="'+m.nombre+'"/></div><div class="fp"><label>Dosis</label><input id="ec_d" value="'+(m.dosis||'')+'"/></div><div class="fp full"><label>Horarios</label><div id="ec_tomas">'+tomasH+'</div><button class="btn btn-ghost btn-sm" onclick="addTomaForm(\'ec_tomas\')" style="margin-top:5px;">+ Horario</button></div></div>',
-    '<button class="btn btn-ghost" onclick="CM()">Cancelar</button><button class="btn btn-primary" onclick="savEditCron('+idx+')">Guardar</button>');
-}
-function savEditCron(idx){
-  var m=_pat.cronicos[idx];m.nombre=document.getElementById('ec_n').value.trim();m.dosis=document.getElementById('ec_d').value.trim();m.tomas=[];
-  document.querySelectorAll('#ec_tomas input[type=time]').forEach(function(inp){if(inp.value)m.tomas.push({id:uid(),hora:inp.value});});
-  CM();rMod('cronicos');toast('✅ Actualizado');
-}
-function dCron(mid){if(!confirm('¿Eliminar?'))return;_pat.cronicos=_pat.cronicos.filter(function(x){return x.id!==mid;});rMod('cronicos');}
-function oAddToma(mid){
-  var m=_pat.cronicos.find(function(x){return x.id===mid;});
-  OM('+ Horario — '+m.nombre,'<div class="fp"><label>Hora</label><input type="time" id="nt_h" value="12:00"/></div>',
-    '<button class="btn btn-ghost" onclick="CM()">Cancelar</button><button class="btn btn-primary" onclick="savToma('+mid+')">Agregar</button>');
-}
-function savToma(mid){
-  var h=document.getElementById('nt_h').value;if(!h)return;
-  var m=_pat.cronicos.find(function(x){return x.id===mid;});if(!m.tomas)m.tomas=[];
-  m.tomas.push({id:uid(),hora:h});CM();rMod('cronicos');toast('✅ Horario agregado');
-}
+function addTomaForm(cid){var c=document.getElementById(cid);if(!c)return;var row=document.createElement('div');row.style.cssText='display:flex;align-items:center;gap:8px;margin-bottom:6px;';row.innerHTML='<input type="time" value="08:00" style="padding:6px 9px;border:1.5px solid var(--gc);border-radius:var(--rs);font-family:\'DM Sans\',sans-serif;font-size:.85rem;"/><button class="btn btn-danger btn-sm" onclick="this.parentElement.remove()">✕</button>';c.appendChild(row);}
+function savCron(ci){var n=document.getElementById('ac_n').value.trim();if(!n){toast('Ingresá el nombre');return;}var tomas=[];document.querySelectorAll('#ac_tomas input[type=time]').forEach(function(inp,i){if(inp.value)tomas.push({id:uid(),hora:inp.value});});_pat.cronicos.push({id:uid(),nombre:n,dosis:document.getElementById('ac_d').value.trim(),color_idx:ci,tomas:tomas});saveDB();CM();rMod('cronicos');toast('✅ Medicamento guardado');}
+function oEditCron(idx){var m=_pat.cronicos[idx];var tomasH=(m.tomas||[]).map(function(t){return'<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><input type="time" value="'+t.hora+'" style="padding:6px 9px;border:1.5px solid var(--gc);border-radius:var(--rs);font-family:\'DM Sans\',sans-serif;font-size:.85rem;"/><button class="btn btn-danger btn-sm" onclick="this.parentElement.remove()">✕</button></div>';}).join('');OM('✏️ Editar — '+m.nombre,'<div class="fg c1"><div class="fp"><label>Nombre</label><input id="ec_n" value="'+m.nombre+'"/></div><div class="fp"><label>Dosis</label><input id="ec_d" value="'+(m.dosis||'')+'"/></div><div class="fp full"><label>Horarios</label><div id="ec_tomas">'+tomasH+'</div><button class="btn btn-ghost btn-sm" onclick="addTomaForm(\'ec_tomas\')" style="margin-top:5px;">+ Horario</button></div></div>','<button class="btn btn-ghost" onclick="CM()">Cancelar</button><button class="btn btn-primary" onclick="savEditCron('+idx+')">Guardar</button>');}
+function savEditCron(idx){var m=_pat.cronicos[idx];m.nombre=document.getElementById('ec_n').value.trim();m.dosis=document.getElementById('ec_d').value.trim();m.tomas=[];document.querySelectorAll('#ec_tomas input[type=time]').forEach(function(inp){if(inp.value)m.tomas.push({id:uid(),hora:inp.value});});saveDB();CM();rMod('cronicos');toast('✅ Actualizado');}
+function dCron(mid){confirmDelete('Eliminar este medicamento crónico.',function(){_pat.cronicos=_pat.cronicos.filter(function(x){return x.id!==mid;});saveDB();rMod('cronicos');});}
+function oAddToma(mid){var m=_pat.cronicos.find(function(x){return x.id===mid;});OM('+ Horario — '+m.nombre,'<div class="fp"><label>Hora</label><input type="time" id="nt_h" value="12:00"/></div>','<button class="btn btn-ghost" onclick="CM()">Cancelar</button><button class="btn btn-primary" onclick="savToma('+mid+')">Agregar</button>');}
+function savToma(mid){var h=document.getElementById('nt_h').value;if(!h)return;var m=_pat.cronicos.find(function(x){return x.id===mid;});if(!m.tomas)m.tomas=[];m.tomas.push({id:uid(),hora:h});saveDB();CM();rMod('cronicos');toast('✅ Horario agregado');}
 
-// ── EVENTUALES ─────────────────────────────────────────
+// ── EVENTUALES ────────────────────────────────────────────────
 function rEventuales(mc){
-  var p=_pat;
-  var h='<div class="card"><div class="card-hd"><span>📋</span><h3>Medicamentos Eventuales</h3>'+
-    '<div style="margin-left:auto;" class="no-print"><button class="btn btn-primary btn-sm" onclick="oAddEv()">+ Agregar</button></div>'+
-    '</div><div class="card-bd">';
+  var p=_pat;var h='<div class="card"><div class="card-hd"><span>📋</span><h3>Medicamentos Eventuales</h3><div style="margin-left:auto;" class="no-print"><button class="btn btn-primary btn-sm" onclick="oAddEv()">+ Agregar</button></div></div><div class="card-bd">';
   if(!p.eventuales.length)h+='<div class="empty"><span class="ei">📋</span><p>Sin eventuales.</p></div>';
   p.eventuales.forEach(function(ev){
     var hist=ev.historial||[];
     h+='<div style="border:1.5px solid var(--gc);border-radius:9px;margin-bottom:10px;overflow:hidden;">'+
       '<div style="background:var(--gc);padding:8px 12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;cursor:pointer;" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display===\'block\'?\'none\':\'block\'">'+
-        '<span style="font-weight:600;flex:1;">💊 '+ev.nombre+'</span>'+
-        (ev.indicacion?'<span style="font-size:.77rem;color:var(--gris);">'+ev.indicacion+'</span>':'')+
+        '<span style="font-weight:600;flex:1;">💊 '+ev.nombre+'</span>'+(ev.indicacion?'<span style="font-size:.77rem;color:var(--gris);">'+ev.indicacion+'</span>':'')+
         '<span style="font-size:.74rem;color:var(--gris);">'+hist.length+' uso(s) ▼</span>'+
         '<div class="no-print" style="display:flex;gap:5px;" onclick="event.stopPropagation()">'+
           '<button class="btn btn-outline btn-sm" onclick="oAddUso('+ev.id+')">+ Uso</button>'+
           '<button class="btn btn-danger btn-sm" onclick="dEv('+ev.id+')">🗑</button>'+
-        '</div></div>'+
-      '<div style="display:none;padding:8px 12px;">';
+        '</div></div><div style="display:none;padding:8px 12px;">';
     if(hist.length){hist.forEach(function(hh){h+='<div style="font-size:.79rem;padding:5px 0;border-bottom:1px solid var(--gc);display:flex;gap:9px;align-items:center;"><span style="white-space:nowrap;">📅 '+d2s(hh.fecha)+'</span><span style="flex:1;">'+hh.motivo+'</span><button class="btn btn-danger btn-sm no-print" onclick="dUso('+hh.id+','+ev.id+')">🗑</button></div>';});}
     else h+='<p style="font-size:.8rem;color:var(--gris);">Sin usos registrados.</p>';
     h+='</div></div>';
@@ -748,578 +760,404 @@ function rEventuales(mc){
   mc.innerHTML=h+'</div></div>';
 }
 function oAddEv(){OM('📋 Nuevo Eventual','<div class="fg c1"><div class="fp"><label>Nombre *</label><input id="ev_n" placeholder="Ej: Ibuprofeno 400mg"/></div><div class="fp"><label>Indicación</label><input id="ev_i" placeholder="Para qué se usa"/></div></div>','<button class="btn btn-ghost" onclick="CM()">Cancelar</button><button class="btn btn-primary" onclick="savEv()">Guardar</button>');}
-function savEv(){var n=document.getElementById('ev_n').value.trim();if(!n){toast('Nombre obligatorio');return;}_pat.eventuales.push({id:uid(),nombre:n,indicacion:document.getElementById('ev_i').value.trim(),historial:[]});CM();rMod('eventuales');toast('✅ Guardado');}
-function dEv(eid){if(!confirm('¿Eliminar?'))return;_pat.eventuales=_pat.eventuales.filter(function(x){return x.id!==eid;});rMod('eventuales');}
+function savEv(){var n=document.getElementById('ev_n').value.trim();if(!n){toast('Nombre obligatorio');return;}_pat.eventuales.push({id:uid(),nombre:n,indicacion:document.getElementById('ev_i').value.trim(),historial:[]});saveDB();CM();rMod('eventuales');toast('✅ Guardado');}
+function dEv(eid){confirmDelete('Eliminar este medicamento eventual.',function(){_pat.eventuales=_pat.eventuales.filter(function(x){return x.id!==eid;});saveDB();rMod('eventuales');});}
 function oAddUso(eid){OM('+ Uso','<div class="fg c1"><div class="fp"><label>Fecha</label><input type="date" id="us_f" value="'+tISO()+'"/></div><div class="fp"><label>Motivo *</label><input id="us_m" placeholder="Dolor de cabeza, fiebre…"/></div><div class="fp"><label>Obs.</label><input id="us_o"/></div></div>','<button class="btn btn-ghost" onclick="CM()">Cancelar</button><button class="btn btn-primary" onclick="savUso('+eid+')">Guardar</button>');}
-function savUso(eid){var m=document.getElementById('us_m').value.trim();if(!m){toast('Ingresá el motivo');return;}var ev=_pat.eventuales.find(function(x){return x.id===eid;});ev.historial.push({id:uid(),fecha:document.getElementById('us_f').value,motivo:m,observaciones:document.getElementById('us_o').value.trim()});CM();rMod('eventuales');toast('✅ Uso registrado');}
-function dUso(hid,eid){var ev=_pat.eventuales.find(function(x){return x.id===eid;});ev.historial=ev.historial.filter(function(x){return x.id!==hid;});rMod('eventuales');}
+function savUso(eid){var m=document.getElementById('us_m').value.trim();if(!m){toast('Ingresá el motivo');return;}var ev=_pat.eventuales.find(function(x){return x.id===eid;});ev.historial.push({id:uid(),fecha:document.getElementById('us_f').value,motivo:m,observaciones:document.getElementById('us_o').value.trim()});saveDB();CM();rMod('eventuales');toast('✅ Uso registrado');}
+function dUso(hid,eid){confirmDelete('Eliminar este registro de uso.',function(){var ev=_pat.eventuales.find(function(x){return x.id===eid;});ev.historial=ev.historial.filter(function(x){return x.id!==hid;});saveDB();rMod('eventuales');});}
 
-// ── PRESIÓN ────────────────────────────────────────────
+// ── PRESIÓN ───────────────────────────────────────────────────
 function rPresion(mc){
-  var p=_pat;
-  var h='<div class="card"><div class="card-hd"><span>💓</span><h3>Presión Arterial</h3><div style="margin-left:auto;" class="no-print"><button class="btn btn-primary btn-sm" onclick="oAddBP()">+ Registro</button></div></div><div class="card-bd">';
-  if(!p.presion.length)h+='<div class="empty"><span class="ei">💓</span><p>Sin registros.</p></div>';
+  var p=_pat;var h='<div class="card"><div class="card-hd"><span>💓</span><h3>Presión Arterial</h3><div style="margin-left:auto;" class="no-print"><button class="btn btn-primary btn-sm" onclick="oAddBP()">+ Registro</button></div></div><div class="card-bd">';
+  if(!p.presion||!p.presion.length)h+='<div class="empty"><span class="ei">💓</span><p>Sin registros.</p></div>';
   else{h+='<div class="mr mr-hd bp" style="padding:6px 8px;"><span>Fecha</span><span>Sist.</span><span>Diast.</span><span>Frec.</span><span>Estado</span><span>Obs.</span><span></span><span></span></div>';
     p.presion.forEach(function(r){var cl=r.estado==='Normal'?'sp-ok':r.estado==='Alta'?'sp-d':'sp-w';h+='<div class="mr bp"><span>'+d2s(r.fecha)+'</span><span><b>'+r.sistolica+'</b></span><span><b>'+r.diastolica+'</b></span><span>'+(r.frecuencia||'—')+'</span><span><span class="sp '+cl+'">'+r.estado+'</span></span><span>'+(r.observaciones||'—')+'</span><button class="btn btn-ghost btn-sm no-print" onclick="oEditBP('+r.id+')">✏️</button><button class="btn btn-danger btn-sm no-print" onclick="dBP('+r.id+')">🗑</button></div>';});}
   mc.innerHTML=h+'<div class="tip">📌 Normal: 120/80 · Alta: ≥140/90</div></div></div>';
 }
 function oAddBP(){OM('💓 Nueva Presión','<div class="fg c3"><div class="fp"><label>Fecha</label><input type="date" id="bp_f" value="'+tISO()+'"/></div><div class="fp"><label>Sistólica</label><input type="number" id="bp_s" placeholder="120"/></div><div class="fp"><label>Diastólica</label><input type="number" id="bp_d" placeholder="80"/></div><div class="fp"><label>Frecuencia</label><input type="number" id="bp_fr" placeholder="70"/></div><div class="fp"><label>Estado</label><select id="bp_e"><option>Normal</option><option>Normal-Alta</option><option>Alta</option><option>Baja</option></select></div><div class="fp"><label>Obs.</label><input id="bp_o"/></div></div>','<button class="btn btn-ghost" onclick="CM()">Cancelar</button><button class="btn btn-primary" onclick="savBP()">Guardar</button>');}
-function savBP(){var s=document.getElementById('bp_s').value,d=document.getElementById('bp_d').value;if(!s||!d){toast('Ingresá sistólica y diastólica');return;}_pat.presion.unshift({id:uid(),fecha:document.getElementById('bp_f').value,sistolica:parseInt(s),diastolica:parseInt(d),frecuencia:document.getElementById('bp_fr').value||null,estado:document.getElementById('bp_e').value,observaciones:document.getElementById('bp_o').value.trim()});CM();rMod('presion');toast('✅ Guardado');}
+function savBP(){var s=document.getElementById('bp_s').value,d=document.getElementById('bp_d').value;if(!s||!d){toast('Ingresá sistólica y diastólica');return;}if(!_pat.presion)_pat.presion=[];_pat.presion.unshift({id:uid(),fecha:document.getElementById('bp_f').value,sistolica:parseInt(s),diastolica:parseInt(d),frecuencia:document.getElementById('bp_fr').value||null,estado:document.getElementById('bp_e').value,observaciones:document.getElementById('bp_o').value.trim()});saveDB();CM();rMod('presion');toast('✅ Guardado');}
 function oEditBP(rid){var r=_pat.presion.find(function(x){return x.id===rid;});OM('✏️ Editar Presión','<div class="fg c3"><div class="fp"><label>Fecha</label><input type="date" id="ebp_f" value="'+r.fecha+'"/></div><div class="fp"><label>Sistólica</label><input type="number" id="ebp_s" value="'+r.sistolica+'"/></div><div class="fp"><label>Diastólica</label><input type="number" id="ebp_d" value="'+r.diastolica+'"/></div><div class="fp"><label>Frecuencia</label><input type="number" id="ebp_fr" value="'+(r.frecuencia||'')+'"/></div><div class="fp"><label>Estado</label><select id="ebp_e">'+['Normal','Normal-Alta','Alta','Baja'].map(function(o){return'<option'+(r.estado===o?' selected':'')+'>'+o+'</option>';}).join('')+'</select></div><div class="fp"><label>Obs.</label><input id="ebp_o" value="'+(r.observaciones||'')+'"/></div></div>','<button class="btn btn-ghost" onclick="CM()">Cancelar</button><button class="btn btn-primary" onclick="savEditBP('+rid+')">Guardar</button>');}
-function savEditBP(rid){var r=_pat.presion.find(function(x){return x.id===rid;});r.fecha=document.getElementById('ebp_f').value;r.sistolica=parseInt(document.getElementById('ebp_s').value);r.diastolica=parseInt(document.getElementById('ebp_d').value);r.frecuencia=document.getElementById('ebp_fr').value;r.estado=document.getElementById('ebp_e').value;r.observaciones=document.getElementById('ebp_o').value.trim();CM();rMod('presion');toast('✅ Actualizado');}
-function dBP(rid){_pat.presion=_pat.presion.filter(function(x){return x.id!==rid;});rMod('presion');}
+function savEditBP(rid){var r=_pat.presion.find(function(x){return x.id===rid;});r.fecha=document.getElementById('ebp_f').value;r.sistolica=parseInt(document.getElementById('ebp_s').value);r.diastolica=parseInt(document.getElementById('ebp_d').value);r.frecuencia=document.getElementById('ebp_fr').value;r.estado=document.getElementById('ebp_e').value;r.observaciones=document.getElementById('ebp_o').value.trim();saveDB();CM();rMod('presion');toast('✅ Actualizado');}
+function dBP(rid){confirmDelete('Eliminar este registro de presión.',function(){_pat.presion=_pat.presion.filter(function(x){return x.id!==rid;});saveDB();rMod('presion');});}
 
-// ── GLUCEMIA ───────────────────────────────────────────
+// ── GLUCEMIA ──────────────────────────────────────────────────
 function rGlucemia(mc){
   var p=_pat;var h='<div class="card"><div class="card-hd"><span>🩸</span><h3>Glucemia</h3><div style="margin-left:auto;" class="no-print"><button class="btn btn-primary btn-sm" onclick="oAddGL()">+ Registro</button></div></div><div class="card-bd">';
-  if(!p.glucemia.length)h+='<div class="empty"><span class="ei">🩸</span><p>Sin registros.</p></div>';
+  if(!p.glucemia||!p.glucemia.length)h+='<div class="empty"><span class="ei">🩸</span><p>Sin registros.</p></div>';
   else{h+='<div class="mr mr-hd gl" style="padding:6px 8px;"><span>Fecha</span><span>mg/dL</span><span>Momento</span><span>Estado</span><span>Obs.</span><span></span></div>';p.glucemia.forEach(function(r){var cl=r.estado==='Normal'?'sp-ok':r.estado==='Alta'?'sp-d':'sp-w';h+='<div class="mr gl"><span>'+d2s(r.fecha)+'</span><span><b>'+r.valor+'</b></span><span>'+r.momento+'</span><span><span class="sp '+cl+'">'+r.estado+'</span></span><span>'+(r.observaciones||'—')+'</span><button class="btn btn-danger btn-sm no-print" onclick="dGL('+r.id+')">🗑</button></div>';});}
   mc.innerHTML=h+'<div class="tip">📌 Ayunas: 70–100 mg/dL</div></div></div>';
 }
 function oAddGL(){OM('🩸 Nueva Glucemia','<div class="fg"><div class="fp"><label>Fecha</label><input type="date" id="gl_f" value="'+tISO()+'"/></div><div class="fp"><label>mg/dL</label><input type="number" id="gl_v" placeholder="100"/></div><div class="fp"><label>Momento</label><select id="gl_m"><option>Ayunas</option><option>Post-prandial</option><option>Antes de dormir</option><option>Otro</option></select></div><div class="fp"><label>Estado</label><select id="gl_e"><option>Normal</option><option>Alta</option><option>Baja</option></select></div><div class="fp full"><label>Obs.</label><input id="gl_o"/></div></div>','<button class="btn btn-ghost" onclick="CM()">Cancelar</button><button class="btn btn-primary" onclick="savGL()">Guardar</button>');}
-function savGL(){var v=document.getElementById('gl_v').value;if(!v){toast('Ingresá el valor');return;}_pat.glucemia.unshift({id:uid(),fecha:document.getElementById('gl_f').value,valor:parseInt(v),momento:document.getElementById('gl_m').value,estado:document.getElementById('gl_e').value,observaciones:document.getElementById('gl_o').value.trim()});CM();rMod('glucemia');toast('✅ Guardado');}
-function dGL(rid){_pat.glucemia=_pat.glucemia.filter(function(x){return x.id!==rid;});rMod('glucemia');}
+function savGL(){var v=document.getElementById('gl_v').value;if(!v){toast('Ingresá el valor');return;}if(!_pat.glucemia)_pat.glucemia=[];_pat.glucemia.unshift({id:uid(),fecha:document.getElementById('gl_f').value,valor:parseInt(v),momento:document.getElementById('gl_m').value,estado:document.getElementById('gl_e').value,observaciones:document.getElementById('gl_o').value.trim()});saveDB();CM();rMod('glucemia');toast('✅ Guardado');}
+function dGL(rid){confirmDelete('Eliminar este registro de glucemia.',function(){_pat.glucemia=_pat.glucemia.filter(function(x){return x.id!==rid;});saveDB();rMod('glucemia');});}
 
-// ── VACUNAS ────────────────────────────────────────────
+// ── VACUNAS ───────────────────────────────────────────────────
 function rVacunas(mc){
   var p=_pat;var h='<div class="card"><div class="card-hd"><span>💉</span><h3>Vacunas</h3><div style="margin-left:auto;" class="no-print"><button class="btn btn-primary btn-sm" onclick="oAddVac()">+ Vacuna</button></div></div><div class="card-bd">';
-  if(!p.vacunas.length)h+='<div class="empty"><span class="ei">💉</span><p>Sin vacunas.</p></div>';
-  p.vacunas.forEach(function(v){h+='<div class="vc-card"><div style="font-size:1.4rem;">💉</div><div style="flex:1;"><div style="font-weight:600;font-size:.87rem;">'+v.nombre+'</div><div style="font-size:.76rem;color:var(--gris);">📅 '+d2s(v.fecha)+' · 📍 '+(v.lugar||'—')+' · Lote: '+(v.lote||'—')+'</div>'+(v.observaciones?'<div style="font-size:.76rem;color:var(--gris);">📝 '+v.observaciones+'</div>':'')+'</div><button class="btn btn-danger btn-sm no-print" onclick="dVac('+v.id+')">🗑</button></div>';});
+  if(!p.vacunas||!p.vacunas.length)h+='<div class="empty"><span class="ei">💉</span><p>Sin vacunas.</p></div>';
+  p.vacunas&&p.vacunas.forEach(function(v){h+='<div class="vc-card"><div style="font-size:1.4rem;">💉</div><div style="flex:1;"><div style="font-weight:600;font-size:.87rem;">'+v.nombre+'</div><div style="font-size:.76rem;color:var(--gris);">📅 '+d2s(v.fecha)+' · 📍 '+(v.lugar||'—')+' · Lote: '+(v.lote||'—')+'</div>'+(v.observaciones?'<div style="font-size:.76rem;color:var(--gris);">📝 '+v.observaciones+'</div>':'')+'</div><button class="btn btn-danger btn-sm no-print" onclick="dVac('+v.id+')">🗑</button></div>';});
   mc.innerHTML=h+'</div></div>';
 }
 function oAddVac(){OM('💉 Nueva Vacuna','<div class="fg"><div class="fp full"><label>Nombre *</label><input id="vac_n" list="dl_vac" placeholder="Ej: Antigripal 2025"/><datalist id="dl_vac"><option value="Antigripal"><option value="COVID-19 Bivalente"><option value="Neumonía (Pneumovax)"><option value="Hepatitis B"><option value="Tétanos"><option value="Herpes Zóster (Shingrix)"></datalist></div><div class="fp"><label>Fecha</label><input type="date" id="vac_f" value="'+tISO()+'"/></div><div class="fp"><label>Lugar</label><input id="vac_l" placeholder="Farmacia de María"/></div><div class="fp"><label>Nro. Lote</label><input id="vac_lo"/></div><div class="fp full"><label>Obs.</label><input id="vac_o"/></div></div>','<button class="btn btn-ghost" onclick="CM()">Cancelar</button><button class="btn btn-primary" onclick="savVac()">Guardar</button>');}
-function savVac(){var n=document.getElementById('vac_n').value.trim();if(!n){toast('Nombre obligatorio');return;}_pat.vacunas.unshift({id:uid(),nombre:n,fecha:document.getElementById('vac_f').value,lugar:document.getElementById('vac_l').value.trim(),lote:document.getElementById('vac_lo').value.trim(),observaciones:document.getElementById('vac_o').value.trim()});CM();rMod('vacunas');toast('✅ Vacuna registrada');}
-function dVac(vid){_pat.vacunas=_pat.vacunas.filter(function(x){return x.id!==vid;});rMod('vacunas');}
+function savVac(){var n=document.getElementById('vac_n').value.trim();if(!n){toast('Nombre obligatorio');return;}if(!_pat.vacunas)_pat.vacunas=[];_pat.vacunas.unshift({id:uid(),nombre:n,fecha:document.getElementById('vac_f').value,lugar:document.getElementById('vac_l').value.trim(),lote:document.getElementById('vac_lo').value.trim(),observaciones:document.getElementById('vac_o').value.trim()});saveDB();CM();rMod('vacunas');toast('✅ Vacuna registrada');}
+function dVac(vid){confirmDelete('Eliminar esta vacuna.',function(){_pat.vacunas=_pat.vacunas.filter(function(x){return x.id!==vid;});saveDB();rMod('vacunas');});}
 
-// ── OBSERVACIONES ──────────────────────────────────────
+// ── OBSERVACIONES ─────────────────────────────────────────────
 function rAdversos(mc){
-  var p=_pat;var tl={reaccion:'🔴 Reacción Adversa',observacion:'📋 Observación',comunicado:'💬 Comunicado',medico:'🩺 Dato Médico',otro:'📝 Otro'};var tc={reaccion:'ot ot-r',observacion:'ot ot-o',comunicado:'ot ot-m',medico:'ot ot-m',otro:'ot ot-x'};
+  var p=_pat;if(!p.obs_clinicas)p.obs_clinicas=[];
+  var tl={reaccion:'🔴 Reacción Adversa',observacion:'📋 Observación',comunicado:'💬 Comunicado',medico:'🩺 Dato Médico',otro:'📝 Otro'};
+  var tc={reaccion:'ot ot-r',observacion:'ot ot-o',comunicado:'ot ot-m',medico:'ot ot-m',otro:'ot ot-x'};
   var h='<div class="card"><div class="card-hd"><span>📝</span><h3>Observaciones / Efectos Adversos</h3><div style="margin-left:auto;" class="no-print"><button class="btn btn-primary btn-sm" onclick="oAddAdv()">+ Agregar</button></div></div><div class="card-bd">';
   if(!p.obs_clinicas.length)h+='<div class="empty"><span class="ei">📝</span><p>Sin observaciones.</p></div>';
   p.obs_clinicas.forEach(function(obs){h+='<div class="oe"><div class="oeh"><span class="'+(tc[obs.tipo]||'ot ot-x')+'">'+(tl[obs.tipo]||obs.tipo)+'</span><span style="font-size:.74rem;color:var(--gris);">📅 '+d2s(obs.fecha)+'</span><div class="no-print" style="margin-left:auto;display:flex;gap:5px;"><button class="btn btn-ghost btn-sm" onclick="oEditAdv('+obs.id+')">✏️</button><button class="btn btn-danger btn-sm" onclick="dAdv('+obs.id+')">🗑</button></div></div><div class="otx">'+obs.texto+'</div></div>';});
   mc.innerHTML=h+'</div></div>';
 }
 function oAddAdv(){OM('📝 Nueva Observación','<div class="fg c1"><div class="fp"><label>Tipo</label><select id="adt"><option value="reaccion">🔴 Reacción Adversa</option><option value="observacion">📋 Observación</option><option value="comunicado">💬 Comunicado</option><option value="medico">🩺 Dato Médico</option><option value="otro">📝 Otro</option></select></div><div class="fp"><label>Fecha</label><input type="date" id="adf" value="'+tISO()+'"/></div><div class="fp full"><label>Descripción</label><textarea id="adtx" placeholder="Describí la observación…"></textarea></div></div>','<button class="btn btn-ghost" onclick="CM()">Cancelar</button><button class="btn btn-primary" onclick="savAdv()">Guardar</button>');}
-function savAdv(){var tx=document.getElementById('adtx').value.trim();if(!tx){toast('Escribí una descripción');return;}_pat.obs_clinicas.unshift({id:uid(),tipo:document.getElementById('adt').value,fecha:document.getElementById('adf').value,texto:tx});CM();rMod('adversos');toast('✅ Guardado');}
+function savAdv(){var tx=document.getElementById('adtx').value.trim();if(!tx){toast('Escribí una descripción');return;}if(!_pat.obs_clinicas)_pat.obs_clinicas=[];_pat.obs_clinicas.unshift({id:uid(),tipo:document.getElementById('adt').value,fecha:document.getElementById('adf').value,texto:tx});saveDB();CM();rMod('adversos');toast('✅ Guardado');}
 function oEditAdv(oid){var obs=_pat.obs_clinicas.find(function(x){return x.id===oid;});OM('✏️ Editar','<div class="fg c1"><div class="fp"><label>Tipo</label><select id="eadt">'+['reaccion','observacion','comunicado','medico','otro'].map(function(t){return'<option value="'+t+'"'+(obs.tipo===t?' selected':'')+'>'+t+'</option>';}).join('')+'</select></div><div class="fp"><label>Fecha</label><input type="date" id="eadf" value="'+obs.fecha+'"/></div><div class="fp full"><label>Descripción</label><textarea id="eadtx">'+obs.texto+'</textarea></div></div>','<button class="btn btn-ghost" onclick="CM()">Cancelar</button><button class="btn btn-primary" onclick="savEditAdv('+oid+')">Guardar</button>');}
-function savEditAdv(oid){var obs=_pat.obs_clinicas.find(function(x){return x.id===oid;});obs.tipo=document.getElementById('eadt').value;obs.fecha=document.getElementById('eadf').value;obs.texto=document.getElementById('eadtx').value.trim();CM();rMod('adversos');toast('✅ Actualizado');}
-function dAdv(oid){if(!confirm('¿Eliminar?'))return;_pat.obs_clinicas=_pat.obs_clinicas.filter(function(x){return x.id!==oid;});rMod('adversos');}
+function savEditAdv(oid){var obs=_pat.obs_clinicas.find(function(x){return x.id===oid;});obs.tipo=document.getElementById('eadt').value;obs.fecha=document.getElementById('eadf').value;obs.texto=document.getElementById('eadtx').value.trim();saveDB();CM();rMod('adversos');toast('✅ Actualizado');}
+function dAdv(oid){confirmDelete('Eliminar esta observación.',function(){_pat.obs_clinicas=_pat.obs_clinicas.filter(function(x){return x.id!==oid;});saveDB();rMod('adversos');});}
 
-// ══════════════════════════════════════════════════════
-//  NOTIFICACIONES EVENTUALES — SISTEMA COMPLETO
-// ══════════════════════════════════════════════════════
-
-// Vista desde la ficha del paciente
-function rNotifEv(mc) {
-  var p = _pat;
-  var ns = loadNotifs().filter(function(n){ return n.paciente_id === p.id; });
-  ns.sort(function(a,b){ return (a.fecha+a.hora) > (b.fecha+b.hora) ? 1 : -1; });
-
-  var pendientes = ns.filter(function(n){ return n.estado==='pendiente'; });
-  var listas     = ns.filter(function(n){ return n.estado==='lista'; });
-  var historial  = ns.filter(function(n){ return n.estado==='enviada'; });
-
-  var h = '<div class="card"><div class="card-hd"><span>🔔</span><h3>Notificaciones Eventuales</h3>'+
-    '<button class="btn btn-purple btn-sm no-print" style="margin-left:auto;" onclick="oAddNotifEv()">+ Nueva</button>'+
-    '</div><div class="card-bd">';
-
-  if(!ns.length) {
-    h+='<div class="empty"><span class="ei">🔔</span><p>Sin notificaciones programadas.<br><span style="font-size:.8rem;">Usá este panel para recordatorios puntuales: cita médica, buscar receta, etc.</span></p></div>';
-  }
-
-  // LISTAS PARA ENVIAR
-  if(listas.length) {
-    h+='<div class="sec-title sec-lista">🟢 Listas para enviar <span>'+listas.length+'</span></div>';
-    listas.forEach(function(n){
-      h+=ncCard(n,p,'lista');
-    });
-  }
-
-  // PENDIENTES
-  if(pendientes.length) {
-    h+='<div class="sec-title sec-pend">🟡 Pendientes <span>'+pendientes.length+'</span></div>';
-    pendientes.forEach(function(n){
-      h+=ncCard(n,p,'pendiente');
-    });
-  }
-
-  // HISTORIAL
-  if(historial.length) {
-    h+='<div class="sec-title sec-hist">⚫ Historial <span>'+historial.length+'</span></div>';
-    historial.forEach(function(n){
-      h+=ncCard(n,p,'historial');
-    });
-  }
-
+// ══════════════════════════════════════════════════════════════
+//  NOTIFICACIONES EVENTUALES — FICHA DEL PACIENTE
+// ══════════════════════════════════════════════════════════════
+function rNotifEv(mc){
+  var p=_pat;
+  var ns=loadNotifs().filter(function(n){return n.paciente_id===p.id;});
+  ns.sort(function(a,b){return(a.fecha+a.hora)>(b.fecha+b.hora)?1:-1;});
+  var pendientes=ns.filter(function(n){return n.estado==='pendiente';});
+  var listas=ns.filter(function(n){return n.estado==='lista';});
+  var historial=ns.filter(function(n){return n.estado==='enviada';});
+  var h='<div class="card"><div class="card-hd"><span>🔔</span><h3>Notificaciones Eventuales</h3><button class="btn btn-purple btn-sm no-print" style="margin-left:auto;" onclick="oAddNotifEv()">+ Nueva</button></div><div class="card-bd">';
+  if(!ns.length)h+='<div class="empty"><span class="ei">🔔</span><p>Sin notificaciones programadas.<br><span style="font-size:.8rem;">Usá este panel para recordatorios puntuales.</span></p></div>';
+  if(listas.length){h+='<div style="font-weight:600;color:#059669;margin-bottom:8px;font-size:.9rem;">🟢 Listas para enviar ('+listas.length+')</div>';listas.forEach(function(n){h+=ncCardSmall(n,p);});}
+  if(pendientes.length){h+='<div style="font-weight:600;color:#b07800;margin-top:10px;margin-bottom:8px;font-size:.9rem;">🟡 Pendientes ('+pendientes.length+')</div>';pendientes.forEach(function(n){h+=ncCardSmall(n,p);});}
+  if(historial.length){h+='<div style="font-weight:600;color:var(--gris);margin-top:10px;margin-bottom:8px;font-size:.9rem;">⚫ Historial ('+historial.length+')</div>';historial.forEach(function(n){h+=ncCardSmall(n,p);});}
   mc.innerHTML=h+'</div></div>';
 }
+function ncCardSmall(n,p){
+  var isWA=n.canal==='wa';var isLista=n.estado==='lista';var isHist=n.estado==='enviada';
+  var actions='';
+  if(isLista&&isWA)actions+='<button class="btn btn-wa btn-sm" onclick="enviarWA(\''+n.id+'\')">📲 Enviar WA</button>';
+  if(!isHist)actions+='<button class="btn btn-danger btn-sm" onclick="eliminarNotif(\''+n.id+'\')">🗑</button>';
+  else actions+='<button class="btn btn-ghost btn-sm" onclick="eliminarNotif(\''+n.id+'\')">🗑</button>';
+  return'<div class="nc '+(isHist?'historial':isLista?'lista':'pendiente')+'">'+
+    '<div class="nc-ic">'+(isHist?'✅':isWA?'💬':'🔔')+'</div>'+
+    '<div class="nc-body"><div class="nc-msg">'+n.mensaje+'</div>'+
+    '<div class="nc-meta">📅 '+d2s(n.fecha)+' · ⏰ '+n.hora+' · '+(isWA?'<span style="color:var(--wa-dark);font-weight:600;">WhatsApp</span>':'<span style="color:var(--purple);font-weight:600;">Push</span>')+'</div>'+
+    (actions?'<div class="nc-actions">'+actions+'</div>':'')+
+    '</div></div>';
+}
 
-function ncCard(n, p, estado) {
-  var isLista    = estado === 'lista';
-  var isPend     = estado === 'pendiente';
-  var isHist     = estado === 'historial';
-  var isWA       = n.canal === 'wa';
-  var isPush     = n.canal === 'push';
+function oAddNotifEv(){
+  var p=_pat;var manana=addD(tISO(),1);var tieneWA=!!(p.telefono&&p.telefono.trim());
+  OM('🔔 Nueva Notificación — '+p.nombre+' '+p.apellido,
+    '<div style="display:flex;gap:10px;margin-bottom:14px;">'+
+      '<label class="canal-opt sel-push" id="lbl-push"><input type="radio" name="ne_canal" value="push" id="ne_push" checked onchange="neToggle()"/>'+
+        '<div><div style="font-weight:600;font-size:.86rem;color:var(--v);">🔔 Push</div><div style="font-size:.72rem;color:var(--gris);">Automática al celular</div></div></label>'+
+      '<label class="canal-opt" id="lbl-wa"><input type="radio" name="ne_canal" value="wa" id="ne_wa" onchange="neToggle()" style="accent-color:var(--wa);"/>'+
+        '<div><div style="font-weight:600;font-size:.86rem;color:var(--wa-dark);">💬 WhatsApp</div><div style="font-size:.72rem;color:var(--gris);">Manual cuando sea el momento</div></div></label>'+
+    '</div>'+
+    '<div class="fp full" style="margin-bottom:10px;"><label>Mensaje *</label>'+
+      '<textarea id="ne_msg" rows="3" style="padding:8px 10px;border:1.5px solid var(--gc);border-radius:var(--rs);font-family:\'DM Sans\',sans-serif;font-size:.85rem;width:100%;resize:vertical;" placeholder="Ej: Recordá ir al médico a buscar la receta"></textarea></div>'+
+    '<div class="fg" style="margin-bottom:10px;">'+
+      '<div class="fp"><label>Fecha</label><input type="date" id="ne_fecha" value="'+manana+'" min="'+tISO()+'"/></div>'+
+      '<div class="fp"><label>Hora</label><input type="time" id="ne_hora" value="09:00"/></div></div>'+
+    '<div id="ne_info_push" class="tip">💡 La notificación llegará automáticamente al celular del paciente.</div>'+
+    '<div id="ne_info_wa" style="display:none;background:#e9fbe9;border:1px solid var(--wa);border-radius:9px;padding:10px 13px;font-size:.82rem;line-height:1.6;">'+
+      '📱 Tel: '+(tieneWA?'<strong>'+p.telefono+'</strong>':'<span style="color:var(--danger);">⚠️ Sin teléfono — editá la ficha</span>')+'<br>'+
+      'Quedará como <strong>Pendiente</strong>. Cuando llegue la fecha/hora, aparecerá en "Listas para enviar" con el botón de WhatsApp.</div>',
+    '<button class="btn btn-ghost" onclick="CM()">Cancelar</button>'+
+    '<button class="btn btn-purple" id="ne_btn_ok" onclick="savNotifEv()">💾 Programar</button>');
+}
+function neToggle(){
+  var esPush=document.getElementById('ne_push').checked;
+  document.getElementById('ne_info_push').style.display=esPush?'':'none';
+  document.getElementById('ne_info_wa').style.display=esPush?'none':'';
+  document.getElementById('lbl-push').className='canal-opt '+(esPush?'sel-push':'');
+  document.getElementById('lbl-wa').className='canal-opt '+(esPush?'':'sel-wa');
+}
+function savNotifEv(){
+  var msg=document.getElementById('ne_msg').value.trim();
+  var fecha=document.getElementById('ne_fecha').value;
+  var hora=document.getElementById('ne_hora').value;
+  var canal=document.getElementById('ne_push').checked?'push':'wa';
+  if(!msg){toast('Escribí el mensaje');return;}
+  if(!fecha||!hora){toast('Elegí fecha y hora');return;}
+  if(canal==='wa'&&!(_pat.telefono&&_pat.telefono.trim())){toast('⚠️ El paciente no tiene teléfono cargado');return;}
+  var dt=new Date(fecha+'T'+hora+':00');var estado=new Date()>=dt?'lista':'pendiente';
+  var ns=loadNotifs();
+  ns.push({id:uid(),paciente_id:_pat.id,paciente_nombre:_pat.nombre+' '+_pat.apellido,paciente_tel:_pat.telefono||'',mensaje:msg,fecha:fecha,hora:hora,canal:canal,estado:estado,creado_en:new Date().toISOString()});
+  saveNotifs(ns);updateBadge();CM();rMod('notifev');
+  toast('✅ Notificación programada — '+(estado==='lista'?'Lista para enviar':'Pendiente para el '+d2s(fecha)));
+}
+function enviarWA(nid){
+  var ns=loadNotifs();var n=ns.find(function(x){return String(x.id)===String(nid);});
+  if(!n){toast('No encontrada');return;}
+  var tel=(n.paciente_tel||'').replace(/[\s\-().+]/g,'');
+  if(!tel){toast('⚠️ Sin teléfono');return;}
+  var msgFinal='Farmacia de María te avisa: '+n.mensaje;
+  window.open('https://wa.me/'+tel+'?text='+encodeURIComponent(msgFinal),'_blank');
+  n.estado='enviada';n.enviado_en=new Date().toISOString();
+  saveNotifs(ns);updateBadge();rMod('notifev');
+  toast('💬 WhatsApp abierto — movido al historial');
+}
+function eliminarNotif(nid){
+  confirmDelete('Eliminar esta notificación.',function(){
+    saveNotifs(loadNotifs().filter(function(x){return String(x.id)!==String(nid);}));
+    updateBadge();
+    if(document.getElementById('N-notifpanel').classList.contains('act'))rNotifPanel(document.getElementById('CA'));
+    else rMod('notifev');
+  });
+}
 
-  var canalIcon  = isWA ? '💬' : '🔔';
-  var metaFecha  = '📅 '+d2s(n.fecha)+' · ⏰ '+n.hora+' hs';
-  var canalLabel = isWA
-    ? '<span class="sp" style="background:#e9fbe9;color:#128c7e;">💬 WhatsApp</span>'
-    : '<span class="sp" style="background:#ede9fe;color:#7c3aed;">🔔 Push</span>';
+// ══════════════════════════════════════════════════════════════
+//  PANEL GLOBAL DE NOTIFICACIONES — 3 SECCIONES MINIMIZADAS
+// ══════════════════════════════════════════════════════════════
+var _nsSearch={lista:'',pendiente:'',historial:''};
+var _nsOpen={lista:true,pendiente:false,historial:false};
 
-  var actions = '';
-  if(isLista && isWA) {
-    actions += '<button class="btn btn-wa btn-sm" onclick="enviarWA(\''+n.id+'\')">📲 Enviar WhatsApp</button>';
-  }
-  if(isLista && isPush) {
-    actions += '<span style="font-size:.78rem;color:var(--v);font-weight:600;">✅ Se enviará automáticamente</span>';
-  }
-  if(!isHist) {
-    actions += '<button class="btn btn-danger btn-sm" onclick="eliminarNotif(\''+n.id+'\')">🗑 Eliminar</button>';
-  }
-  if(isHist) {
-    actions += '<button class="btn btn-ghost btn-sm" onclick="eliminarNotif(\''+n.id+'\')">🗑 Eliminar del historial</button>';
-  }
+function rNotifPanel(ca){
+  actualizarEstados();updateBadge();
+  var ns=loadNotifs();
+  ns.sort(function(a,b){return(a.fecha+a.hora)>(b.fecha+b.hora)?1:-1;});
+  var listas=ns.filter(function(n){return n.estado==='lista';});
+  var pendientes=ns.filter(function(n){return n.estado==='pendiente';});
+  var historial=ns.filter(function(n){return n.estado==='enviada';});
+  var suscriptos=DB.pacientes.filter(function(p){return p.cronicos&&p.cronicos.some(function(m){return m.tomas&&m.tomas.length;});}).length;
+  ca.innerHTML=
+    '<div class="stats-grid">'+
+      '<div class="stat-c wa"><span style="font-size:1.4rem;">🟢</span><div><div class="snum">'+listas.length+'</div><div class="slabel">Listas para enviar</div></div></div>'+
+      '<div class="stat-c wn"><span style="font-size:1.4rem;">🟡</span><div><div class="snum">'+pendientes.length+'</div><div class="slabel">Pendientes</div></div></div>'+
+      '<div class="stat-c ok"><span style="font-size:1.4rem;">🔔</span><div><div class="snum">'+suscriptos+'</div><div class="slabel">Con recordatorios</div></div></div>'+
+    '</div>'+
+    renderNSec('lista','🟢 Listas para enviar',listas,'nsec-lista')+
+    renderNSec('pendiente','🟡 Pendientes',pendientes,'nsec-pend')+
+    renderNSec('historial','⚫ Historial',historial,'nsec-hist',true);
+}
 
-  return '<div class="nc '+estado+'">'+
-    '<div class="nc-ic">'+canalIcon+'</div>'+
+function renderNSec(tipo,titulo,items,cls,hasClean){
+  var q=(_nsSearch[tipo]||'').toLowerCase();
+  var filtrados=q?items.filter(function(n){return n.paciente_nombre.toLowerCase().includes(q)||n.mensaje.toLowerCase().includes(q);}):items;
+  var isOpen=_nsOpen[tipo];
+  var extra=hasClean&&items.length?'<button class="btn btn-ghost btn-sm" style="margin-left:auto;" onclick="limpiarHistorial(event)">🧹 Limpiar</button>':'';
+  var h='<div class="nsec '+cls+'">'+
+    '<div class="nsec-hd" onclick="toggleNSec(\''+tipo+'\')">'+
+      '<span style="font-size:1.1rem;">'+(tipo==='lista'?'🟢':tipo==='pendiente'?'🟡':'⚫')+'</span>'+
+      '<div class="nsec-title">'+titulo.replace(/^[🟢🟡⚫] /,'')+'</div>'+
+      '<span class="nsec-count">'+items.length+'</span>'+
+      extra+
+      '<span class="nsec-arrow'+(isOpen?' open':'')+'">▼</span>'+
+    '</div>'+
+    '<div class="nsec-body'+(isOpen?' open':'')+'">'+
+      '<div class="nsec-search"><span>🔍</span><input type="text" value="'+q+'" placeholder="Buscar en esta sección…" oninput="nsSearch(\''+tipo+'\',this.value)" onclick="event.stopPropagation()"/></div>'+
+      '<div class="nsec-list">';
+  if(!filtrados.length){
+    h+='<div style="padding:12px 0;text-align:center;color:var(--gris);font-size:.84rem;">'+(q?'Sin resultados para "'+q+'"':tipo==='lista'?'No hay notificaciones listas por ahora.':tipo==='pendiente'?'No hay notificaciones pendientes.':'El historial está vacío.')+'</div>';
+  } else {
+    // Agrupar WA del mismo paciente+fecha+hora en lista
+    if(tipo==='lista'){
+      var waGrupos={};var pushItems=[];
+      filtrados.forEach(function(n){
+        if(n.canal==='wa'){var key=n.paciente_id+'_'+n.fecha+'_'+n.hora;if(!waGrupos[key])waGrupos[key]={nids:[],paciente_nombre:n.paciente_nombre,paciente_tel:n.paciente_tel,fecha:n.fecha,hora:n.hora,mensajes:[]};waGrupos[key].nids.push(n.id);waGrupos[key].mensajes.push(n.mensaje);}
+        else pushItems.push(n);
+      });
+      Object.values(waGrupos).forEach(function(g){
+        var msgTxt=g.mensajes.length>1?g.mensajes.map(function(m,i){return(i+1)+'. '+m;}).join('\n'):g.mensajes[0];
+        h+='<div class="nc lista">'+
+          '<div class="nc-ic">💬</div>'+
+          '<div class="nc-body">'+
+            '<div class="nc-paciente">'+g.paciente_nombre+'</div>'+
+            '<div class="nc-msg">'+(g.mensajes.length>1?g.mensajes.map(function(m){return'• '+m;}).join('<br>'):g.mensajes[0])+'</div>'+
+            '<div class="nc-meta">📅 '+d2s(g.fecha)+' · ⏰ '+g.hora+(g.mensajes.length>1?' · <strong style="color:var(--wa-dark);">'+g.mensajes.length+' mensajes</strong>':'')+'</div>'+
+            '<div class="nc-actions">'+
+              '<button class="btn btn-wa btn-sm" onclick="enviarGrupoWA(\''+encodeURIComponent(JSON.stringify(g.nids))+'\',\''+encodeURIComponent(g.paciente_tel)+'\',\''+encodeURIComponent(msgTxt)+'\')">📲 Enviar WhatsApp</button>'+
+              '<button class="btn btn-danger btn-sm" onclick="eliminarGrupo(\''+encodeURIComponent(JSON.stringify(g.nids))+'\')">🗑</button>'+
+            '</div>'+
+          '</div></div>';
+      });
+      pushItems.forEach(function(n){h+=renderNCard(n);});
+    } else {
+      filtrados.forEach(function(n){h+=renderNCard(n);});
+    }
+  }
+  h+='</div></div></div>';return h;
+}
+
+function renderNCard(n){
+  var isWA=n.canal==='wa';var isLista=n.estado==='lista';var isHist=n.estado==='enviada';
+  var actions='';
+  if(isLista&&isWA)actions+='<button class="btn btn-wa btn-sm" onclick="enviarWA(\''+n.id+'\')">📲 Enviar WA</button>';
+  if(isLista&&!isWA)actions+='<span style="font-size:.77rem;color:var(--v);font-weight:600;">✅ Push automático</span>';
+  if(!isHist)actions+='<button class="btn btn-ghost btn-sm" onclick="verFicha('+n.paciente_id+')">Ver Ficha</button><button class="btn btn-danger btn-sm" onclick="eliminarNotif(\''+n.id+'\')">🗑</button>';
+  else actions+='<button class="btn btn-ghost btn-sm" onclick="eliminarNotif(\''+n.id+'\')">🗑</button>';
+  return'<div class="nc '+(isHist?'historial':isLista?'lista':'pendiente')+'">'+
+    '<div class="nc-ic">'+(isHist?'✅':isWA?'💬':'🔔')+'</div>'+
     '<div class="nc-body">'+
+      '<div class="nc-paciente">'+n.paciente_nombre+'</div>'+
       '<div class="nc-msg">'+n.mensaje+'</div>'+
-      '<div class="nc-meta">'+metaFecha+' '+canalLabel+'</div>'+
+      '<div class="nc-meta">📅 '+d2s(n.fecha)+' · ⏰ '+n.hora+' · '+(isWA?'<span style="color:var(--wa-dark);font-weight:600;">WhatsApp</span>':'<span style="color:var(--purple);font-weight:600;">Push</span>')+'</div>'+
       (actions?'<div class="nc-actions">'+actions+'</div>':'')+
     '</div></div>';
 }
 
-// CREAR NUEVA NOTIFICACIÓN EVENTUAL
-function oAddNotifEv() {
-  var p = _pat;
-  var manana = addD(tISO(),1);
-  var tieneWA = !!(p.telefono && p.telefono.trim());
-
-  OM('🔔 Nueva Notificación Eventual — '+p.nombre+' '+p.apellido,
-    // SELECTOR CANAL
-    '<div style="display:flex;gap:10px;margin-bottom:16px;" id="canal-wrap">'+
-      '<label class="canal-opt sel-push" id="lbl-push">'+
-        '<input type="radio" name="ne_canal" value="push" id="ne_push" checked onchange="neToggleCanal()"/>'+
-        '<div><div style="font-weight:600;font-size:.86rem;color:var(--v);">🔔 Notificación push</div>'+
-        '<div style="font-size:.72rem;color:var(--gris);">Llega automática al celular</div></div>'+
-      '</label>'+
-      '<label class="canal-opt" id="lbl-wa">'+
-        '<input type="radio" name="ne_canal" value="wa" id="ne_wa" onchange="neToggleCanal()" style="accent-color:var(--wa);"/>'+
-        '<div><div style="font-weight:600;font-size:.86rem;color:var(--wa-dark);">💬 WhatsApp</div>'+
-        '<div style="font-size:.72rem;color:var(--gris);">Programá y enviá cuando quieras</div></div>'+
-      '</label>'+
-    '</div>'+
-    // MENSAJE
-    '<div class="fp full" style="margin-bottom:12px;">'+
-      '<label>Mensaje *</label>'+
-      '<textarea id="ne_msg" rows="3" style="padding:8px 10px;border:1.5px solid var(--gc);border-radius:var(--rs);font-family:\'DM Sans\',sans-serif;font-size:.85rem;width:100%;resize:vertical;" placeholder="Ej: Recordá ir al médico a pedir la receta del Carvedilol"></textarea>'+
-    '</div>'+
-    // FECHA Y HORA (ambos canales la tienen)
-    '<div class="fg" style="margin-bottom:10px;">'+
-      '<div class="fp"><label>Fecha programada</label><input type="date" id="ne_fecha" value="'+manana+'" min="'+tISO()+'"/></div>'+
-      '<div class="fp"><label>Hora programada</label><input type="time" id="ne_hora" value="09:00"/></div>'+
-    '</div>'+
-    // INFO EXTRA SEGÚN CANAL
-    '<div id="ne_info_push" class="tip">💡 La notificación llegará automáticamente al celular del paciente en la fecha y hora indicadas.</div>'+
-    '<div id="ne_info_wa" style="display:none;background:#e9fbe9;border:1px solid var(--wa);border-radius:9px;padding:10px 13px;font-size:.82rem;line-height:1.6;">'+
-      '📱 <strong>Teléfono:</strong> '+(tieneWA?'<span style="color:var(--v);font-weight:600;">'+p.telefono+'</span>':'<span style="color:var(--danger);font-weight:600;">⚠️ Sin teléfono — editá la ficha primero</span>')+'<br>'+
-      'El mensaje <strong>quedará en estado Pendiente</strong>. Cuando llegue la fecha/hora, aparecerá en "🟢 Listas para enviar" y podrás enviarlo con un clic.<br>'+
-      '<span style="font-size:.74rem;color:var(--gris);">El envío siempre es manual — vos decidís cuándo apretar el botón.</span>'+
-    '</div>',
-    '<button class="btn btn-ghost" onclick="CM()">Cancelar</button>'+
-    '<button class="btn btn-purple" id="ne_btn_ok" onclick="savNotifEv()">💾 Programar</button>');
+function toggleNSec(tipo){_nsOpen[tipo]=!_nsOpen[tipo];rNotifPanel(document.getElementById('CA'));}
+function nsSearch(tipo,val){_nsSearch[tipo]=val;rNotifPanel(document.getElementById('CA'));}
+function verFicha(pid){openP(pid);swMod('notifev');}
+function enviarGrupoWA(nidsEnc,telEnc,msgEnc){
+  var nids=JSON.parse(decodeURIComponent(nidsEnc));
+  var tel=decodeURIComponent(telEnc).replace(/[\s\-().+]/g,'');
+  var msg=decodeURIComponent(msgEnc);
+  if(!tel){toast('⚠️ Sin teléfono');return;}
+  window.open('https://wa.me/'+tel+'?text='+encodeURIComponent('Farmacia de María te avisa: '+msg),'_blank');
+  var ns=loadNotifs();
+  ns.forEach(function(n){if(nids.indexOf(n.id)>=0||nids.indexOf(String(n.id))>=0){n.estado='enviada';n.enviado_en=new Date().toISOString();}});
+  saveNotifs(ns);updateBadge();rNotifPanel(document.getElementById('CA'));
+  toast('💬 WhatsApp abierto — '+(nids.length>1?nids.length+' notificaciones':'Notificación')+' al historial');
 }
-
-function neToggleCanal() {
-  var esPush = document.getElementById('ne_push').checked;
-  document.getElementById('ne_info_push').style.display = esPush ? '' : 'none';
-  document.getElementById('ne_info_wa').style.display   = esPush ? 'none' : '';
-  document.getElementById('lbl-push').className = 'canal-opt ' + (esPush ? 'sel-push' : '');
-  document.getElementById('lbl-wa').className   = 'canal-opt ' + (esPush ? '' : 'sel-wa');
-}
-
-function savNotifEv() {
-  var msg   = document.getElementById('ne_msg').value.trim();
-  var fecha = document.getElementById('ne_fecha').value;
-  var hora  = document.getElementById('ne_hora').value;
-  var canal = document.getElementById('ne_push').checked ? 'push' : 'wa';
-  if(!msg)  { toast('Escribí el mensaje'); return; }
-  if(!fecha){ toast('Elegí la fecha');     return; }
-  if(!hora) { toast('Elegí la hora');      return; }
-  if(canal==='wa' && !(_pat.telefono&&_pat.telefono.trim())) {
-    toast('⚠️ El paciente no tiene teléfono cargado'); return;
-  }
-
-  // Determinar estado inicial
-  var dt  = new Date(fecha+'T'+hora+':00');
-  var now = new Date();
-  var estado = now >= dt ? 'lista' : 'pendiente';
-
-  var ns = loadNotifs();
-  ns.push({
-    id: uid(),
-    paciente_id:  _pat.id,
-    paciente_nombre: _pat.nombre + ' ' + _pat.apellido,
-    paciente_tel: _pat.telefono || '',
-    mensaje: msg,
-    fecha:   fecha,
-    hora:    hora,
-    canal:   canal,
-    estado:  estado,
-    creado_en: new Date().toISOString()
+function eliminarGrupo(nidsEnc){
+  var nids=JSON.parse(decodeURIComponent(nidsEnc));
+  confirmDelete('Eliminar '+(nids.length>1?nids.length+' notificaciones':'esta notificación')+'.',function(){
+    saveNotifs(loadNotifs().filter(function(n){return nids.indexOf(n.id)<0&&nids.indexOf(String(n.id))<0;}));
+    updateBadge();rNotifPanel(document.getElementById('CA'));
   });
-  saveNotifs(ns);
-  updateBadge();
-  CM();
-  rMod('notifev');
-  toast('✅ Notificación programada — estado: '+(estado==='lista'?'Lista para enviar':'Pendiente'));
 }
+function limpiarHistorial(e){e.stopPropagation();confirmDelete('Limpiar TODO el historial de notificaciones enviadas.',function(){saveNotifs(loadNotifs().filter(function(n){return n.estado!=='enviada';}));rNotifPanel(document.getElementById('CA'));toast('🧹 Historial limpiado');});}
 
-// ENVIAR WA
-function enviarWA(nid) {
-  var ns  = loadNotifs();
-  var n   = ns.find(function(x){ return String(x.id)===String(nid); });
-  if(!n)  { toast('Notificación no encontrada'); return; }
-  var tel = (n.paciente_tel||'').replace(/[\s\-().+]/g,'');
-  if(!tel){ toast('⚠️ Sin teléfono cargado');    return; }
-  var msgFinal = 'Farmacia de María te avisa: ' + n.mensaje;
-  window.open('https://wa.me/'+tel+'?text='+encodeURIComponent(msgFinal),'_blank');
-  // Marcar enviada → historial automáticamente
-  n.estado = 'enviada';
-  n.enviado_en = new Date().toISOString();
-  saveNotifs(ns);
-  updateBadge();
-  rMod('notifev');
-  toast('💬 WhatsApp abierto — mensaje movido al historial');
-}
-
-// ELIMINAR
-function eliminarNotif(nid) {
-  if(!confirm('¿Eliminar esta notificación?')) return;
-  var ns = loadNotifs().filter(function(x){ return String(x.id)!==String(nid); });
-  saveNotifs(ns);
-  updateBadge();
-  rMod('notifev');
-}
-
-// ══════════════════════════════════════════════════════
-//  PANEL GLOBAL DE NOTIFICACIONES
-//  3 secciones + agrupación por paciente+hora
-// ══════════════════════════════════════════════════════
-
-var _npSearch = '';
-
-function rNotifPanel(ca) {
-  actualizarEstados();
-  updateBadge();
-  var ns = loadNotifs();
-  ns.sort(function(a,b){ return (a.fecha+a.hora) > (b.fecha+b.hora) ? 1 : -1; });
-
-  var q = _npSearch.toLowerCase();
-  var filtradas = q ? ns.filter(function(n){ return n.paciente_nombre.toLowerCase().includes(q); }) : ns;
-
-  var listas     = filtradas.filter(function(n){ return n.estado==='lista'; });
-  var pendientes = filtradas.filter(function(n){ return n.estado==='pendiente'; });
-  var historial  = filtradas.filter(function(n){ return n.estado==='enviada'; });
-
-  // Estadísticas
-  var suscriptos = DB.pacientes.filter(function(p){ return p.suscripto; }).length;
-
-  ca.innerHTML =
-    '<div class="stats-grid">'+
-      '<div class="stat-c wa"><span style="font-size:1.4rem;">🟢</span><div><div class="snum">'+listas.length+'</div><div class="slabel">Listas para enviar</div></div></div>'+
-      '<div class="stat-c wn"><span style="font-size:1.4rem;">🟡</span><div><div class="snum">'+pendientes.length+'</div><div class="slabel">Pendientes</div></div></div>'+
-      '<div class="stat-c ok"><span style="font-size:1.4rem;">🔔</span><div><div class="snum">'+suscriptos+'</div><div class="slabel">Con push activo</div></div></div>'+
-    '</div>'+
-
-    // BUSCADOR
-    '<div style="display:flex;align-items:center;gap:8px;background:var(--blanco);border:1.5px solid var(--gc);border-radius:30px;padding:6px 14px;margin-bottom:16px;box-shadow:var(--sh);">'+
-      '<span>🔍</span><input type="text" value="'+q+'" placeholder="Buscar por nombre de paciente…" oninput="_npSearch=this.value;rNotifPanel(document.getElementById(\'CA\'))" style="border:none;background:transparent;outline:none;font-size:.86rem;font-family:\'DM Sans\',sans-serif;width:100%;"/>'+
-    '</div>';
-
-  // ── LISTAS PARA ENVIAR ──────────────────────────────
-  ca.innerHTML +=
-    '<div class="sec-title sec-lista">🟢 Listas para enviar <span>'+listas.length+'</span></div>';
-
-  if(!listas.length) {
-    ca.innerHTML += '<div style="background:var(--blanco);border-radius:var(--r);padding:16px 18px;color:var(--gris);font-size:.85rem;margin-bottom:14px;box-shadow:var(--sh);">Sin notificaciones listas por el momento.</div>';
-  } else {
-    // Agrupar WA por paciente+fecha+hora → un solo botón por grupo
-    var waGrupos = {};
-    var pushListas = [];
-    listas.forEach(function(n){
-      if(n.canal==='wa'){
-        var key = n.paciente_id+'_'+n.fecha+'_'+n.hora;
-        if(!waGrupos[key]) waGrupos[key]={ nids:[], paciente_nombre:n.paciente_nombre, paciente_tel:n.paciente_tel, fecha:n.fecha, hora:n.hora, mensajes:[] };
-        waGrupos[key].nids.push(n.id);
-        waGrupos[key].mensajes.push(n.mensaje);
-      } else {
-        pushListas.push(n);
-      }
-    });
-
-    // Renderizar grupos WA agrupados
-    Object.values(waGrupos).forEach(function(g){
-      var msgAgrupado = g.mensajes.length === 1 ? g.mensajes[0] : g.mensajes.map(function(m,i){ return (i+1)+'. '+m; }).join('\n');
-      var nidsJSON = JSON.stringify(g.nids);
-      ca.innerHTML +=
-        '<div class="nc lista">'+
-          '<div class="nc-ic">💬</div>'+
-          '<div class="nc-body">'+
-            '<div class="nc-paciente">'+g.paciente_nombre+'</div>'+
-            '<div class="nc-msg">'+(g.mensajes.length>1?g.mensajes.map(function(m,i){return'<div style="margin-bottom:3px;">• '+m+'</div>';}).join(''):g.mensajes[0])+'</div>'+
-            '<div class="nc-meta">📅 '+d2s(g.fecha)+' · ⏰ '+g.hora+' hs'+
-              (g.mensajes.length>1?' · <span style="color:var(--wa-dark);font-weight:600;">'+g.mensajes.length+' mensajes agrupados</span>':'')+
-            '</div>'+
-            '<div class="nc-actions">'+
-              '<button class="btn btn-wa btn-sm" onclick="enviarGrupoWA('+g.paciente_id+',\''+encodeURIComponent(JSON.stringify(g.nids))+'\',\''+encodeURIComponent(g.paciente_tel)+'\',\''+encodeURIComponent(msgAgrupado)+'\')">📲 Enviar WhatsApp</button>'+
-              '<button class="btn btn-danger btn-sm" onclick="eliminarGrupoNotif(\''+encodeURIComponent(JSON.stringify(g.nids))+'\')">🗑 Eliminar</button>'+
-            '</div>'+
-          '</div>'+
-        '</div>';
-    });
-
-    // Push listas (info solamente)
-    pushListas.forEach(function(n){
-      ca.innerHTML +=
-        '<div class="nc lista">'+
-          '<div class="nc-ic">🔔</div>'+
-          '<div class="nc-body">'+
-            '<div class="nc-paciente">'+n.paciente_nombre+'</div>'+
-            '<div class="nc-msg">'+n.mensaje+'</div>'+
-            '<div class="nc-meta">📅 '+d2s(n.fecha)+' · ⏰ '+n.hora+' hs · <span style="color:var(--purple);font-weight:600;">Push automático</span></div>'+
-            '<div class="nc-actions"><button class="btn btn-danger btn-sm" onclick="eliminarNotif(\''+n.id+'\')">🗑 Eliminar</button></div>'+
-          '</div>'+
-        '</div>';
-    });
-  }
-
-  // ── PENDIENTES ──────────────────────────────────────
-  ca.innerHTML += '<div class="sec-title sec-pend">🟡 Pendientes <span>'+pendientes.length+'</span></div>';
-  if(!pendientes.length) {
-    ca.innerHTML += '<div style="background:var(--blanco);border-radius:var(--r);padding:16px 18px;color:var(--gris);font-size:.85rem;margin-bottom:14px;box-shadow:var(--sh);">Sin notificaciones pendientes.</div>';
-  } else {
-    pendientes.forEach(function(n){
-      var isWA = n.canal==='wa';
-      ca.innerHTML +=
-        '<div class="nc pendiente">'+
-          '<div class="nc-ic">'+(isWA?'💬':'🔔')+'</div>'+
-          '<div class="nc-body">'+
-            '<div class="nc-paciente">'+n.paciente_nombre+'</div>'+
-            '<div class="nc-msg">'+n.mensaje+'</div>'+
-            '<div class="nc-meta">📅 '+d2s(n.fecha)+' · ⏰ '+n.hora+' hs · '+(isWA?'<span style="color:var(--wa-dark);font-weight:600;">WhatsApp</span>':'<span style="color:var(--purple);font-weight:600;">Push</span>')+'</div>'+
-            '<div class="nc-actions">'+
-              '<button class="btn btn-ghost btn-sm" onclick="openP('+n.paciente_id+');swMod(\'notifev\')">Ver ficha</button>'+
-              '<button class="btn btn-danger btn-sm" onclick="eliminarNotif(\''+n.id+'\')">🗑 Eliminar</button>'+
-            '</div>'+
-          '</div>'+
-        '</div>';
-    });
-  }
-
-  // ── HISTORIAL ───────────────────────────────────────
-  ca.innerHTML += '<div class="sec-title sec-hist">⚫ Historial <span>'+historial.length+'</span>'+
-    (historial.length?'<button class="btn btn-ghost btn-sm" style="margin-left:auto;" onclick="limpiarHistorial()">🧹 Limpiar todo</button>':'')+'</div>';
-  if(!historial.length) {
-    ca.innerHTML += '<div style="background:var(--blanco);border-radius:var(--r);padding:16px 18px;color:var(--gris);font-size:.85rem;box-shadow:var(--sh);">El historial está vacío.</div>';
-  } else {
-    historial.forEach(function(n){
-      ca.innerHTML +=
-        '<div class="nc historial">'+
-          '<div class="nc-ic">✅</div>'+
-          '<div class="nc-body">'+
-            '<div class="nc-paciente">'+n.paciente_nombre+'</div>'+
-            '<div class="nc-msg" style="opacity:.8;">'+n.mensaje+'</div>'+
-            '<div class="nc-meta">📅 '+d2s(n.fecha)+' · ⏰ '+n.hora+' hs · Enviada</div>'+
-            '<div class="nc-actions"><button class="btn btn-ghost btn-sm" onclick="eliminarNotif(\''+n.id+'\')">🗑 Eliminar</button></div>'+
-          '</div>'+
-        '</div>';
-    });
-  }
-}
-
-// ENVIAR GRUPO WA AGRUPADO (panel global)
-function enviarGrupoWA(pid, nidsEnc, telEnc, msgEnc) {
-  var nids = JSON.parse(decodeURIComponent(nidsEnc));
-  var tel  = decodeURIComponent(telEnc).replace(/[\s\-().+]/g,'');
-  var msg  = decodeURIComponent(msgEnc);
-  if(!tel){ toast('⚠️ Sin teléfono cargado'); return; }
-  var msgFinal = 'Farmacia de María te avisa: ' + msg;
-  window.open('https://wa.me/'+tel+'?text='+encodeURIComponent(msgFinal),'_blank');
-  // Marcar todas como enviadas
-  var ns = loadNotifs();
-  ns.forEach(function(n){
-    if(nids.indexOf(n.id) >= 0 || nids.indexOf(String(n.id)) >= 0) {
-      n.estado = 'enviada';
-      n.enviado_en = new Date().toISOString();
-    }
-  });
-  saveNotifs(ns);
-  updateBadge();
-  rNotifPanel(document.getElementById('CA'));
-  toast('💬 WhatsApp abierto — '+(nids.length>1?nids.length+' mensajes movidos al historial':'Mensaje movido al historial'));
-}
-
-function eliminarGrupoNotif(nidsEnc) {
-  var nids = JSON.parse(decodeURIComponent(nidsEnc));
-  if(!confirm('¿Eliminar '+(nids.length>1?nids.length+' notificaciones?':'esta notificación?'))) return;
-  var ns = loadNotifs().filter(function(n){ return nids.indexOf(n.id)<0 && nids.indexOf(String(n.id))<0; });
-  saveNotifs(ns);
-  updateBadge();
-  rNotifPanel(document.getElementById('CA'));
-}
-
-function limpiarHistorial() {
-  if(!confirm('¿Eliminar todo el historial de notificaciones enviadas?')) return;
-  var ns = loadNotifs().filter(function(n){ return n.estado !== 'enviada'; });
-  saveNotifs(ns);
-  rNotifPanel(document.getElementById('CA'));
-  toast('🧹 Historial limpiado');
-}
-
-// ── USUARIOS ──────────────────────────────────────────
+// ══════════════════════════════════════════════════════════════
+//  USUARIOS
+// ══════════════════════════════════════════════════════════════
 function rUsuarios(ca){
-  var pin=getPin();
+  if(CU.rol!=='owner'){ca.innerHTML='<div class="empty"><span class="ei">🔐</span><p>Acceso restringido.</p></div>';return;}
   ca.innerHTML=
-    '<div class="card">'+
-      '<div class="card-hd"><span>👤</span><h3>Usuarios del Sistema</h3>'+
-        '<button class="btn btn-primary btn-sm no-print" style="margin-left:auto;" onclick="oAddUser()">+ Nuevo Usuario</button>'+
-      '</div>'+
+    '<div class="card" style="margin-bottom:14px;">'+
+      '<div class="card-hd"><span>👤</span><h3>Usuarios del Sistema</h3><button class="btn btn-primary btn-sm no-print" style="margin-left:auto;" onclick="oAddUser()">+ Nuevo Empleado</button></div>'+
       '<div class="card-bd">'+
-        '<div class="tip" style="margin-bottom:12px;"><strong>Empleados</strong> pueden editar pacientes pero NO pueden eliminar. Solo el <strong>Dueño</strong> puede eliminar (requiere PIN).</div>'+
+        '<div class="tip" style="margin-bottom:12px;"><strong>Empleados</strong>: pueden ver y editar pacientes. No pueden eliminar datos ni acceder a Usuarios o Configuración avanzada.</div>'+
         '<table class="tbl"><thead><tr><th>Nombre</th><th>Email</th><th>Rol</th><th></th></tr></thead><tbody>'+
         DB.usuarios.map(function(u){
           var rol=u.rol==='owner'?'<span class="role-badge rb-owner">👑 Dueño</span>':'<span class="role-badge rb-staff">💼 Empleado</span>';
-          var acc=u.rol==='owner'?'<span style="font-size:.75rem;color:var(--gris);">(sesión actual)</span>':'<button class="btn btn-danger btn-sm" onclick="delUser('+u.id+')">🗑</button>';
+          var acc=u.id===CU.id?'<span style="font-size:.75rem;color:var(--gris);">(sesión actual)</span>':u.rol!=='owner'?'<button class="btn btn-danger btn-sm" onclick="delUser('+u.id+')">🗑 Eliminar</button>':'—';
           return'<tr><td style="font-weight:600;">'+u.nombre+'</td><td style="font-size:.82rem;">'+u.email+'</td><td>'+rol+'</td><td>'+acc+'</td></tr>';
         }).join('')+
         '</tbody></table>'+
       '</div>'+
-    '</div>'+
-    '<div class="card">'+
-      '<div class="card-hd"><span>🔐</span><h3>PIN de Seguridad</h3></div>'+
-      '<div class="card-bd">'+
-        '<p style="font-size:.83rem;color:var(--gris);margin-bottom:10px;">PIN actual: <strong>'+pin+'</strong> — Protege las acciones de eliminación.</p>'+
-        '<div class="fg" style="max-width:300px;">'+
-          '<div class="fp"><label>Nuevo PIN (4 dígitos)</label><input type="password" id="np1" maxlength="4" placeholder="····"/></div>'+
-          '<div class="fp"><label>Repetir</label><input type="password" id="np2" maxlength="4" placeholder="····"/></div>'+
-        '</div>'+
-        '<button class="btn btn-primary" style="margin-top:8px;" onclick="changePin()">Guardar PIN</button>'+
-      '</div>'+
     '</div>';
 }
-function oAddUser(){OM('👤 Nuevo Empleado','<div class="fg c1"><div class="fp"><label>Nombre *</label><input id="nu_n" placeholder="Juan Pérez"/></div><div class="fp"><label>Email *</label><input id="nu_e" type="email" placeholder="juan@farmaciademia.com"/></div><div class="fp"><label>Contraseña *</label><input id="nu_p" type="password" placeholder="Mínimo 4 caracteres"/></div></div>','<button class="btn btn-ghost" onclick="CM()">Cancelar</button><button class="btn btn-primary" onclick="savUser()">Crear</button>');}
-function savUser(){var n=document.getElementById('nu_n').value.trim(),e=document.getElementById('nu_e').value.trim(),p=document.getElementById('nu_p').value;if(!n||!e||p.length<4){toast('Completá todos los campos');return;}if(DB.usuarios.find(function(x){return x.email===e;})){toast('Email ya registrado');return;}DB.usuarios.push({id:uid(),nombre:n,email:e,rol:'staff'});CM();SP('usuarios');toast('✅ Usuario creado');}
-function delUser(uid_del){reqPin('Eliminar usuario — ingresá tu PIN',function(){DB.usuarios=DB.usuarios.filter(function(x){return x.id!==uid_del;});SP('usuarios');toast('Usuario eliminado');});}
-function changePin(){var p1=document.getElementById('np1').value,p2=document.getElementById('np2').value;if(p1.length!==4||!/^\d{4}$/.test(p1)){toast('PIN debe ser 4 dígitos numéricos');return;}if(p1!==p2){toast('Los PINs no coinciden');return;}localStorage.setItem(PIN_KEY,p1);SP('usuarios');toast('✅ PIN actualizado');}
+function oAddUser(){
+  OM('👤 Nuevo Empleado',
+    '<div class="fg c1">'+
+      '<div class="fp"><label>Nombre completo *</label><input id="nu_n" placeholder="Juan Pérez"/></div>'+
+      '<div class="fp"><label>Email (para login) *</label><input id="nu_e" type="email" placeholder="juan@mail.com"/></div>'+
+      '<div class="fp"><label>Contraseña *</label><input id="nu_p" type="password" placeholder="Mínimo 6 caracteres"/></div>'+
+    '</div>',
+    '<button class="btn btn-ghost" onclick="CM()">Cancelar</button><button class="btn btn-primary" onclick="savUser()">Crear</button>');
+}
+function savUser(){
+  var n=document.getElementById('nu_n').value.trim(),e=document.getElementById('nu_e').value.trim().toLowerCase(),p=document.getElementById('nu_p').value;
+  if(!n||!e||p.length<6){toast('Completá todos los campos (mínimo 6 caracteres)');return;}
+  if(DB.usuarios.find(function(x){return x.email===e;})){toast('Email ya registrado');return;}
+  DB.usuarios.push({id:uid(),nombre:n,email:e,pass:hashPass(p),rol:'staff'});
+  saveDB();CM();SP('usuarios');toast('✅ Empleado creado');
+}
+function delUser(uid_del){
+  var u=DB.usuarios.find(function(x){return x.id===uid_del;});
+  confirmDelete('Eliminar el usuario <strong>'+u.nombre+'</strong>.',function(){
+    DB.usuarios=DB.usuarios.filter(function(x){return x.id!==uid_del;});
+    saveDB();SP('usuarios');toast('Usuario eliminado');
+  });
+}
 
-// ── CONFIGURACIÓN (con logo) ───────────────────────────
+// ══════════════════════════════════════════════════════════════
+//  CONFIGURACIÓN
+// ══════════════════════════════════════════════════════════════
 function rConfig(ca){
-  var logoSrc = localStorage.getItem(LOGO_KEY);
+  var logoSrc=localStorage.getItem(LOGO_KEY);
   ca.innerHTML=
     '<div style="max-width:600px;display:flex;flex-direction:column;gap:14px;">'+
-
     // LOGO
     '<div class="card"><div class="card-hd"><span>🏥</span><h3>Logo de la Farmacia</h3></div><div class="card-bd">'+
-      '<p style="font-size:.83rem;color:var(--gris);margin-bottom:12px;">El logo aparece en el sidebar y en las impresiones de fichas.</p>'+
+      '<p style="font-size:.83rem;color:var(--gris);margin-bottom:12px;">Aparece en el sidebar y en las impresiones de fichas.</p>'+
       '<div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">'+
-        (logoSrc?'<img id="logo-preview" src="'+logoSrc+'" class="logo-preview" style="display:block;"/>':'<img id="logo-preview" class="logo-preview"/>')+
+        (logoSrc?'<img src="'+logoSrc+'" class="logo-preview-img"/>':'<div style="width:80px;height:80px;border-radius:10px;background:var(--gc);display:flex;align-items:center;justify-content:center;font-size:2rem;">💊</div>')+
         '<div>'+
-          '<label class="btn btn-outline" style="cursor:pointer;" id="logo-lbl-config">'+
-            (logoSrc?'📷 Cambiar logo':'📷 Subir logo')+
-            '<input type="file" accept="image/*" style="display:none" onchange="uploadLogo(this)"/>'+
-          '</label>'+
-          (logoSrc?'<div style="margin-top:8px;"><button class="btn btn-danger btn-sm" onclick="removeLogo()">🗑 Eliminar logo</button></div>':'')+
+          '<label class="btn btn-outline" style="cursor:pointer;">'+(logoSrc?'📷 Cambiar logo':'📷 Subir logo')+
+            '<input type="file" accept="image/*" style="display:none" onchange="uploadLogo(this)"/></label>'+
+          (logoSrc?'<div style="margin-top:8px;"><button class="btn btn-danger btn-sm" onclick="removeLogo()">🗑 Eliminar</button></div>':'')+
         '</div>'+
       '</div>'+
     '</div></div>'+
-
-    // NOTIFICACIONES
-    '<div class="card"><div class="card-hd"><span>🔔</span><h3>Notificaciones Push</h3></div><div class="card-bd">'+
-      '<p style="font-size:.83rem;color:var(--gris);margin-bottom:10px;">Estado: <strong id="notif-status">verificando…</strong></p>'+
-      '<button class="btn btn-primary" onclick="reqNotifPerm()">🔔 Activar notificaciones</button>'+
-      '<div class="tip" style="margin-top:10px;">⚠️ En modo demo (archivo local) las notificaciones push no funcionan. Sí funcionan al subir a Railway.</div>'+
-    '</div></div>'+
-
     // CAMBIAR CONTRASEÑA
-    '<div class="card"><div class="card-hd"><span>🔐</span><h3>Cambiar Contraseña</h3></div><div class="card-bd">'+
-      '<div class="tip">⚠️ En modo demo los cambios no persisten. Sí funciona en el sistema real.</div>'+
-    '</div></div>'+
-
-    '</div>';
-
-  setTimeout(function(){
-    var el=document.getElementById('notif-status');if(!el)return;
-    if(!('Notification' in window)){el.textContent='No soportado';}
-    else if(Notification.permission==='granted'){el.style.color='var(--v)';el.textContent='✅ Activadas';}
-    else if(Notification.permission==='denied'){el.style.color='var(--danger)';el.textContent='❌ Bloqueadas';}
-    else{el.style.color='var(--ac)';el.textContent='⚠️ Sin configurar';}
-  },100);
+    (CU.rol==='owner'?
+    '<div class="card"><div class="card-hd"><span>🔐</span><h3>Seguridad del Dueño</h3></div><div class="card-bd">'+
+      '<div class="fg c1">'+
+        '<div class="fp"><label>Nueva Contraseña</label><input type="password" id="cfg_np" placeholder="Mínimo 6 caracteres"/></div>'+
+        '<div class="fp"><label>Repetir Contraseña</label><input type="password" id="cfg_np2" placeholder="Igual que arriba"/></div>'+
+      '</div>'+
+      '<button class="btn btn-primary" style="margin-top:8px;" onclick="changePass()">Guardar Contraseña</button>'+
+      '<hr style="border:none;border-top:1px solid var(--gc);margin:16px 0;">'+
+      '<p style="font-size:.83rem;font-weight:600;margin-bottom:8px;">Pregunta secreta para recuperar acceso</p>'+
+      '<div class="fg c1">'+
+        '<div class="fp"><label>Pregunta</label>'+
+          '<select id="cfg_preg">'+
+            '<option value="¿Cuál es el nombre de tu primera mascota?">¿Cuál es el nombre de tu primera mascota?</option>'+
+            '<option value="¿En qué ciudad naciste?">¿En qué ciudad naciste?</option>'+
+            '<option value="¿Cuál es el nombre de tu madre?">¿Cuál es el nombre de tu madre?</option>'+
+            '<option value="¿Cuál era el nombre de tu escuela primaria?">¿Cuál era el nombre de tu escuela primaria?</option>'+
+            '<option value="¿Cuál es tu película favorita?">¿Cuál es tu película favorita?</option>'+
+          '</select></div>'+
+        '<div class="fp"><label>Tu respuesta secreta</label><input type="text" id="cfg_resp" placeholder="Escribí tu respuesta"/></div>'+
+      '</div>'+
+      '<button class="btn btn-outline" style="margin-top:8px;" onclick="changePregunta()">Guardar Pregunta Secreta</button>'+
+      '<div class="tip" style="margin-top:10px;">💡 Esta pregunta te permite recuperar el acceso si olvidás tu contraseña. Guardala en un lugar seguro.</div>'+
+    '</div></div>':'')+'</div>';
+}
+function changePass(){
+  var p1=document.getElementById('cfg_np').value,p2=document.getElementById('cfg_np2').value;
+  if(p1.length<6){toast('Mínimo 6 caracteres');return;}
+  if(p1!==p2){toast('Las contraseñas no coinciden');return;}
+  var owner=DB.usuarios.find(function(u){return u.id===CU.id;});
+  owner.pass=hashPass(p1);saveDB();toast('✅ Contraseña actualizada');
+  document.getElementById('cfg_np').value='';document.getElementById('cfg_np2').value='';
+}
+function changePregunta(){
+  var q=document.getElementById('cfg_preg').value;
+  var r=document.getElementById('cfg_resp').value.trim().toLowerCase();
+  if(!r){toast('Escribí tu respuesta');return;}
+  var owner=DB.usuarios.find(function(u){return u.id===CU.id;});
+  owner.pregunta=q;owner.respuesta=hashPass(r);saveDB();
+  toast('✅ Pregunta secreta guardada');
 }
 function removeLogo(){
   if(!confirm('¿Eliminar el logo?'))return;
   localStorage.removeItem(LOGO_KEY);
   document.getElementById('sl-ic').innerHTML='💊';
-  rConfig(document.getElementById('CA'));
-  toast('Logo eliminado');
-}
-function reqNotifPerm(){
-  if(!('Notification' in window)){toast('No soportado en este navegador');return;}
-  Notification.requestPermission().then(function(r){
-    if(r==='granted')toast('🔔 Activadas — funcionarán al subir a Railway');
-    else toast('Denegadas');
-  });
+  rConfig(document.getElementById('CA'));toast('Logo eliminado');
 }
 
-// ── PIN ───────────────────────────────────────────────
-var _pinCB=null,_pinCur='';
-function reqPin(msg,cb){
-  _pinCB=cb;_pinCur='';
-  var d=document.createElement('div');d.className='pin-overlay';d.id='PIN_OV';
-  d.innerHTML='<div class="pin-box"><h3>🔐 PIN Requerido</h3><p>'+msg+'</p>'+
-    '<div class="pin-dots"><div class="pin-dot" id="pd0"></div><div class="pin-dot" id="pd1"></div><div class="pin-dot" id="pd2"></div><div class="pin-dot" id="pd3"></div></div>'+
-    '<div class="pin-keys">'+[1,2,3,4,5,6,7,8,9].map(function(n){return'<button class="pin-key" onclick="pinKey(\''+n+'\')">'+n+'</button>';}).join('')+
-    '<button class="pin-key del" onclick="pinKey(\'del\')">⌫</button>'+
-    '<button class="pin-key" onclick="pinKey(\'0\')">0</button>'+
-    '<button class="pin-key del" onclick="pinKey(\'cancel\')">✕</button>'+
-    '</div><div class="pin-err" id="pin-err"></div></div>';
-  document.body.appendChild(d);
-}
-function pinKey(k){
-  if(k==='cancel'){document.getElementById('PIN_OV').remove();_pinCB=null;return;}
-  if(k==='del')_pinCur=_pinCur.slice(0,-1);
-  else if(_pinCur.length<4)_pinCur+=k;
-  for(var i=0;i<4;i++){var dot=document.getElementById('pd'+i);if(dot)dot.classList.toggle('filled',i<_pinCur.length);}
-  if(_pinCur.length===4){
-    if(_pinCur===getPin()){document.getElementById('PIN_OV').remove();if(_pinCB)_pinCB();_pinCB=null;_pinCur='';}
-    else{document.getElementById('pin-err').textContent='PIN incorrecto';_pinCur='';for(var j=0;j<4;j++){var d2=document.getElementById('pd'+j);if(d2)d2.classList.remove('filled');}}
-  }
+// ══════════════════════════════════════════════════════════════
+//  EXPORTAR DATOS (backup)
+// ══════════════════════════════════════════════════════════════
+function exportarDatos(){
+  var data={pacientes:DB.pacientes,notificaciones:loadNotifs(),exportado:new Date().toISOString()};
+  var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');a.href=url;
+  a.download='farmaavisa_backup_'+tISO()+'.json';a.click();URL.revokeObjectURL(url);
+  toast('📥 Backup descargado');
 }
 
-// ── INIT ──────────────────────────────────────────────
-window.addEventListener('load', function() {
+// ══════════════════════════════════════════════════════════════
+//  INIT
+// ══════════════════════════════════════════════════════════════
+window.addEventListener('load',function(){
+  loadDB();
+  loadSession();
   loadLogo();
-  actualizarEstados();
-  updateBadge();
-  SP('pacientes');
-
-  // Mostrar/ocultar barra móvil según tamaño pantalla
-  function checkMobile() {
-    var isMobile = window.innerWidth <= 700;
-    document.getElementById('mobile-nav').style.display = isMobile ? 'flex' : 'none';
-  }
-  checkMobile();
-  window.addEventListener('resize', checkMobile);
-
-  // Actualizar estados y badge cada minuto
-  setInterval(function(){
-    actualizarEstados();
-    updateBadge();
-    if(document.getElementById('N-notifpanel').classList.contains('act')){
-      rNotifPanel(document.getElementById('CA'));
-    }
-  }, 60000);
+  if(CU){enterApp();}
+  // Enter con tecla en login
+  document.getElementById('lp').addEventListener('keydown',function(e){if(e.key==='Enter')doLogin();});
+  document.getElementById('lu').addEventListener('keydown',function(e){if(e.key==='Enter')doLogin();});
 });
 </script>
 </body>
