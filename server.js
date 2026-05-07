@@ -1,5 +1,5 @@
 // server.js — FarmaAvisa con notificaciones push reales
-const express  = require('express');
+const express = require('express');
 const path     = require('path');
 const fs       = require('fs');
 const webpush  = require('web-push');
@@ -9,7 +9,8 @@ const app  = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json({ limit: '10mb' }));
-app.use(express.static(path.join(__dirname, 'public')));
+// Corregido: Servir archivos desde la raíz del proyecto
+app.use(express.static(path.join(__dirname, '.')));
 
 // ── VAPID ─────────────────────────────────────────────────────
 var VAPID_PUBLIC  = process.env.VAPID_PUBLIC;
@@ -79,7 +80,6 @@ app.post('/api/schedule', function(req, res) {
   var ns = loadScheduled();
   var n  = req.body;
   if (!n.patientId || !n.fecha || !n.hora || !n.mensaje) return res.status(400).json({ error: 'Faltan datos' });
-  // Evitar duplicados por id
   ns = ns.filter(function(x) { return x.id !== n.id; });
   ns.push(n);
   saveScheduled(ns);
@@ -117,7 +117,6 @@ function sendPush(subscription, payload) {
   return webpush.sendNotification(subscription, JSON.stringify(payload))
     .catch(function(err) {
       if (err.statusCode === 410 || err.statusCode === 404) {
-        // Suscripción expirada — limpiar
         var subs = loadSubs();
         Object.keys(subs).forEach(function(id) {
           if (JSON.stringify(subs[id].subscription) === JSON.stringify(subscription)) {
@@ -141,7 +140,6 @@ cron.schedule('* * * * *', function() {
   var ns     = loadScheduled();
   var changed = false;
 
-  // Agrupar notificaciones del mismo paciente y hora
   var grupos = {};
   ns.forEach(function(n) {
     if (n.enviada) return;
@@ -170,7 +168,6 @@ cron.schedule('* * * * *', function() {
       renotify: true
     }).then(function() {
       console.log('[PUSH OK]', g.name, '→', g.mensajes.join(' | '));
-      // Marcar como enviadas
       ns.forEach(function(n) { if (g.ids.indexOf(n.id) >= 0) { n.enviada = true; n.enviadoEn = new Date().toISOString(); } });
       changed = true;
     }).catch(function(e) {
@@ -183,10 +180,12 @@ cron.schedule('* * * * *', function() {
 
 // ── INICIO ────────────────────────────────────────────────────
 app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  // Corregido: Buscar index.html en la raíz, no en /public
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.listen(PORT, function() {
+// Corregido: Escuchar en '0.0.0.0' para Railway
+app.listen(PORT, '0.0.0.0', function() {
   console.log('\n╔══════════════════════════════════════╗');
   console.log('║   FarmaAvisa — Farmacia de María     ║');
   console.log('║   Puerto: ' + PORT + '                         ║');
