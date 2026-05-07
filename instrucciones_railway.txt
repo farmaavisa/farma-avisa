@@ -1,0 +1,38 @@
+=======================================================
+PASOS PARA SUBIR A RAILWAY SIN PERDER NUNCA TUS DATOS
+=======================================================
+
+Hemos mejorado TODO para que **NUNCA PIERDAS TUS DATOS** cuando lo subas a Railway, y no hace falta que copies y pegues "VAPID keys" o uses APIS mías (así tu información es 100% tuya y no se usa para nada más).
+
+1. **LAS CLAVES IMPORTANTES (VAPID Keys):**
+¡Ya no tenés que generarlas ni pegarlas! El sistema ahora mismo está programado para crear sus propias claves de seguridad encriptadas y guardarlas localmente de forma privada en el servidor, esto lo hace la primera vez que se inicia. ¡Tu seguridad y la información de los QR es 100% tuya y privada!
+
+2. **DÓNDE SE GUARDAN LOS DATOS (¡MUY IMPORTANTE!)**
+Para que NUNCA se borren tus pacientes o configuraciones de la Farmacia cuando reinicies Railway, hemos adaptado el código para que guarde todo en una carpeta que vos le digas. 
+En Railway **debes adjuntar un disco duro virtual** (se llaman Volumes).
+
+**Sigue estos pasos simples en Railway:**
+- Andá a tu proyecto en Railway.
+- Entrá a los Ajustes de Servicio (Service Settings).
+- Buscá la opción que dice **"Volumes"**.
+- Hacé click en **"Add Volume"**.
+- Poné en "Mount Path" lo siguiente:  /app/data
+- Andá a las "Variables" del servicio.
+- Creá una Variable que diga: RAILWAY_VOLUME_MOUNT_PATH
+- Como valor, poné: /app/data
+
+¡LISTO! Ahora Railway guardará TODA la información, pacientes, suscripciones y claves de seguridad automáticamente en el Disco Duro de Railway, y NUNCA se borrarán, incluso si volvés a subir una versión nueva desde GitHub.
+
+3. **AUTO-BACKUP EN LA NUBE (NUEVO P/ GOOGLE DRIVE):**
+Si querés tener un registro de Excel/Google Sheets o Drive por cada cosa que se cargue, en la pestaña "Configuración" ahora tenés **Auto-Backup en la Nube**. Ahi mismo pegás una URL de Make.com o Zapier (un "Webhook") para que les mande todos tus datos y ¡zaz! Make te los guarda en tu Google Drive sin que vos hagas click a nada. Está protegido para que solo vos, como dueño de la farmacia, puedas configurarlo usando tu contraseña.
+
+4. **EL LOGO POR DEFECTO (NUEVO):**
+Se creó una carpeta en `public/assets/images/`. Ahi tenés un archivo llamado `logo.svg`.
+Podés reemplazar ese archivo de logo en tu GitHub por la foto real de la "Farmacia de María" (ejemplo "logo.png" y le cambias el nombre). De esta manera el logo viene "incrustado de fabrica". Tambien si un dia decidís cambiarlo igual lo podés hacer desde la "Configuración" tradicional de la aplicación en vivo sin bajar nada y Railway aplicará tu cambio nuevo.
+
+5. **SEGURIDAD Y CAMBIAR LA CONTRASEÑA:**
+Tu contraseña y los datos viajan desde el backend al frontend de forma segura mediante JSON en el Backend ("Express").
+¿Es fácil cambiarla? ¡Sí! Dentro del sistema de la farmacia ve a "Configuración" (el engranaje) -> Elige "Seguridad del Dueño". Allí podrás cambiar tu contraseña rápidamente mediante la pregunta de seguridad por defecto ('mascota'). 
+Si alguna vez tus clientes usan F12 para "Inspeccionar" tu página de pacientes, se chocarán con un sistema bloqueado porque Node.js está sirviendo y verificando todo y no expondrá información sensible.
+
+¡Ahora simplemente descarga el ZIP desde AI Studio, súbelo a GitHub, y conéctalo a tu cuenta de Railway! Todo funcionará al instante.
