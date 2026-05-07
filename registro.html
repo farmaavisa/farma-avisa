@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#1a6b4a">
+<title>FarmaAvisa — Activar Recordatorios</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --v:#1a6b4a;--vc:#2d9166;--vp:#e8f5ee;--vm:#c2e8d3;
+  --ac:#f0a500;--fondo:#f7faf8;--blanco:#fff;
+  --gris:#6b7a72;--gc:#edf1ef;--texto:#1c2b22;
+  --sh:0 12px 32px rgba(26,107,74,.15);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--texto);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1.5rem}
+
+.card{background:var(--blanco);border-radius:24px;padding:2.5rem 2rem;width:100%;max-width:400px;box-shadow:var(--sh);text-align:center}
+.logo{font-family:'DM Serif Display',serif;font-size:2.2rem;color:var(--v);margin-bottom:0.5rem}
+.logo span{color:var(--vc)}
+.sub{font-size:.75rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em;margin-bottom:2rem}
+
+.pharmacy-box {
+  background: var(--vp);
+  border: 2px dashed var(--vc);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+.pharmacy-name { font-family: 'DM Serif Display', serif; color: var(--v); font-size: 1.2rem; margin-bottom: 0.2rem; }
+.pharmacy-desc { font-size: 0.85rem; color: var(--vc); }
+
+.instruction { font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; color: var(--texto); }
+.instruction strong { color: var(--v); }
+
+.btn{
+  width: 100%;
+  padding: 1.1rem;
+  background: var(--v);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .2s;
+  box-shadow: 0 8px 24px rgba(26,107,74,0.3);
+}
+.btn:hover{background:var(--vc);transform:translateY(-2px);box-shadow:0 12px 32px rgba(26,107,74,0.4)}
+.btn:active{transform:translateY(0)}
+.btn:disabled { background: var(--gris); cursor: not-allowed; transform: none; box-shadow: none; }
+
+#msg { margin-top: 1rem; font-size: 0.85rem; min-height: 1.2rem; }
+.success { color: var(--v); }
+.error { color: #d93025; }
+
+.footer { margin-top: 2rem; font-size: 0.75rem; color: var(--gris); }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="logo">Farma<span>Avisa</span></div>
+  <div class="sub">Recordatorios Inteligentes</div>
+
+  <div class="pharmacy-box">
+    <div class="pharmacy-name">Farmacia de María</div>
+    <div class="pharmacy-desc">Cuidado que acompaña</div>
+  </div>
+
+  <div id="content">
+    <p class="instruction">Hola, para recibir los avisos de tus medicamentos directamente en tu celular:</p>
+    <button class="btn" id="btn-activate">🔔 Activar Recordatorios</button>
+  </div>
+
+  <div id="msg"></div>
+
+  <p class="footer">Sistema seguro y privado · FarmaAvisa v4</p>
+</div>
+
+<script type="module">
+  // Registration logic
+  const params = new URLSearchParams(window.location.search);
+  const patientId = params.get('id');
+  const btn = document.getElementById('btn-activate');
+  const msg = document.getElementById('msg');
+
+  if (!patientId) {
+    document.getElementById('content').innerHTML = '<p class="error">Ups! El link es inválido. Pedile a la farmacia que te genere uno nuevo.</p>';
+  }
+
+  btn.addEventListener('click', async () => {
+    btn.disabled = true;
+    msg.textContent = 'Solicitando permisos...';
+    
+    try {
+      if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
+        throw new Error('Tu navegador no soporta notificaciones push.');
+      }
+
+      const reg = await navigator.serviceWorker.register('/sw.js');
+      const permission = await Notification.requestPermission();
+      
+      if (permission !== 'granted') {
+        throw new Error('Permisos denegados. Activá las notificaciones en la configuración del sitio.');
+      }
+
+      msg.textContent = 'Conectando con el servidor...';
+      
+      const configResp = await fetch('/api/config');
+      const { vapidPublicKey } = await configResp.json();
+
+      const subscription = await reg.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: urlBase64ToUint8Array(vapidPublicKey)
+      });
+
+      await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          patientId: patientId,
+          patientName: 'Paciente (Registro Web)',
+          subscription: subscription.toJSON()
+        })
+      });
+
+      msg.className = 'success';
+      msg.textContent = '✅ ¡Listo! Ya estás vinculado con la farmacia.';
+      document.getElementById('content').innerHTML = '<div style="font-size:3rem;margin-bottom:1rem">🎉</div><p class="success" style="font-weight:600">¡Suscripción exitosa!</p><p style="font-size:0.85rem;color:var(--gris);margin-top:10px">Ya podés cerrar esta pestaña.</p>';
+
+    } catch (error) {
+      msg.className = 'error';
+      msg.textContent = error.message;
+      btn.disabled = false;
+    }
+  });
+
+  function urlBase64ToUint8Array(base64String) {
+    const padding = '='.repeat((4 - base64String.length % 4) % 4);
+    const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+    const rawData = window.atob(base64);
+    const outputArray = new Uint8Array(rawData.length);
+    for (let i = 0; i < rawData.length; ++i) {
+      outputArray[i] = rawData.charCodeAt(i);
+    }
+    return outputArray;
+  }
+</script>
+
+</body>
+</html>
