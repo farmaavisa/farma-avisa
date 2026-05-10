@@ -129,9 +129,12 @@ async function startServer() {
     app.use(vite.middlewares);
   } else {
     console.log("Iniciando en modo Producción...");
-    // Usamos __dirname para asegurar que encuentre la carpeta dist en Render
     const distPath = path.join(__dirname, "dist");
+    
+    // Servir archivos estáticos de dist
     app.use(express.static(distPath));
+    
+    // Fallback para SPA
     app.get("*", (req, res) => {
       const indexPath = path.join(distPath, "index.html");
       if (fs.existsSync(indexPath)) {

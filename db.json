@@ -1,0 +1,38 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "Dueño Farmacia",
+      "email": "admin@farmaciademia.com",
+      "pass": "-4nevbk",
+      "rol": "owner",
+      "pregunta": "¿Cuál es el nombre de tu primera mascota?",
+      "respuesta": "dw2y7s"
+    }
+  ],
+  "pacientes": [
+    {
+      "id": 1778421699275,
+      "nombre": "324",
+      "apellido": "432",
+      "dni": "432",
+      "telefono": "432",
+      "tel_alt": "432",
+      "email": "423",
+      "direccion": "432",
+      "dob": "3233-04-05",
+      "obra_social": "432",
+      "nro_os": "432",
+      "med_cabecera": "432",
+      "med_confianza1": "423",
+      "med_confianza2": "432423",
+      "observaciones": "234",
+      "cronicos": [],
+      "eventuales": [],
+      "presion": [],
+      "glucemia": [],
+      "vacunas": [],
+      "obs_clinicas": []
+    }
+  ]
+}
